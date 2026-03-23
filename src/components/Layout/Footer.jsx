@@ -40,48 +40,33 @@ const Footer = ({ isSlotsOnly }) => {
     ];
 
     return (
-        <footer className="footer-cs">
-            <div className="footer-mobile-menu mobile-item">
-                <div className="logo">
-                    <img src={ImgLogo} alt="Logo" />
-                </div>
-                <p className="text-center mt-3 mb-3">
-                    2026 All right reserved. Site operated under License from Curaçao <span className="fi fi-ar ml-3"></span>
-                </p>
-            </div>
-            <div className="footer-top-container">
-                <div className="footer-top">
-                    <div className="principal desktop-item">
-                        <div className="footer-top-item">
-                            <div className="logo">
-                                <img src={ImgLogo} alt="Logo" />
-                            </div>
-                            <p className="text-justify mt-3 mb-3 text-copyright">
-                                2026 All right reserved. Site operated under License from Curaçao <span className="fi fi-ar ml-3"></span>
+        <footer className="page-footer font-small unique-color-dark">
+            <div className="container text-center text-md-left pt-4">
+                <div className="row mt-3">
+                    <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <p>© Esmeralda </p>
+                    </div>
+                    <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <h6 className="text-uppercase font-weight-bold">Productos</h6>
+                        <hr className="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style={{ width: 60 }} />
+                        {menuItems.map((menu, index) => (
+                            <p key={index}>
+                                <a
+                                    className="side-menu-nav-link"
+                                    onClick={() => navigate(menu.href)}
+                                >
+                                    {menu.name}
+                                </a>
                             </p>
-                        </div>
-                    </div>
-                    <div className="nav-items flex-wrap align-items-start">
-                        <div className="d-flex w-100">
-                            <div className="footer-top-item">
-                                <h2 className="title">
-                                    <span>Páginas</span>
-                                </h2>
-                                <div className="options-items">
-                                    {menuItems.map((menu, index) => (
-                                        <div className="option" key={index}>
-                                            <a
-                                                onClick={() => navigate(menu.href)}
-                                            >
-                                                {menu.name}
-                                            </a>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
+            </div>
+            <div className="footer-copyright text-center py-3">
+                <img src="https://cdn.esmeralda.world/images/18.svg" width="30px" />
+                <img src="https://cdn.esmeralda.world/images/gt-logo.png" width="50" alt="" />
+                Juega responsablemente. Para mayor información visita:
+                <a href="https://www.gamblingtherapy.org/es" target="_new"> GamblingTherapy.org</a>
             </div>
         </footer>
     );
