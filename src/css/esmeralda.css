@@ -762,3 +762,14 @@ a {
         transform: rotate(1turn)
     }
 }
+
+.hot-slide img {
+    height: 180px !important;
+    object-fit: cover;
+}
+
+@media (max-width: 575px) {
+    .fixed-sn main, .hidden-sn main {
+        /* padding-top: 21px; */
+    }
+}

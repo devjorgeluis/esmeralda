@@ -1,30 +1,17 @@
 import { useContext, useCallback, useRef, useEffect, useState } from "react";
 import { AppContext } from "../../AppContext";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Grid, Navigation } from "swiper/modules";
-
+import { Navigation } from "swiper/modules";
 import "swiper/css";
-import 'swiper/css/grid';
 import "swiper/css/navigation";
-import BigGameCard from "../BigGameCard";
 
-const HotGameSlideshow = ({ games, name, title, onGameClick, loadMoreContent }) => {
+const HotGameSlideshow = ({ games, name, title, onGameClick }) => {
     const { contextData } = useContext(AppContext);
     const swiperRef = useRef(null);
     const prevRef = useRef(null);
     const nextRef = useRef(null);
     const [isPrevDisabled, setIsPrevDisabled] = useState(true);
     const [isNextDisabled, setIsNextDisabled] = useState(false);
-    const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1200);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setIsDesktop(window.innerWidth >= 1200);
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
 
     const handleGameClick = (game, isDemo = false) => {
         if (onGameClick) {
@@ -81,96 +68,61 @@ const HotGameSlideshow = ({ games, name, title, onGameClick, loadMoreContent }) 
     }, [games, updateNavigationState]);
 
     return (
-        <div className="home-section-module-important home-section-module-4 loaded">
-            <div className="home-section-module-container">
-                <div className="home-header">
-                    <div className="title">
-                        <div className="first-title">
-                            <span>{title}</span>
-                        </div>
-                    </div>
-                    {
-                        loadMoreContent &&
-                        <a className="show-more-games-lobby" onClick={loadMoreContent}>
-                            <span>Ver todos</span>
-                        </a>
-                    }
-                </div>
-                <div className="dw-home-featured-games">
-                    <div className="swiper-featured-games">
-                        <div className="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-multirow swiper-container-android">
-                            <div
-                                className={`swiper-button-prev ${isPrevDisabled ? "disabled" : ""}`}
-                                onClick={handlePrev}
-                                role="button"
-                                tabIndex={0}
-                                aria-disabled={isPrevDisabled}
-                            >
-                                <i aria-hidden="true" className="fa fa-angle-left"></i>
-                            </div>
-                            <div
-                                className={`swiper-button-next ${isNextDisabled ? "disabled" : ""}`}
-                                onClick={handleNext}
-                                role="button"
-                                tabIndex={0}
-                                aria-disabled={isNextDisabled}
-                            >
-                                <i aria-hidden="true" className="fa fa-angle-right"></i>
-                            </div>
-                        </div>
-                        <div className="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-multirow">
-                            <Swiper
-                                ref={swiperRef}
-                                modules={[Grid, Navigation]}
-                                {...(isDesktop && {
-                                    grid: {
-                                        rows: 2,
-                                        fill: "row",
-                                    }
-                                })}
-                                spaceBetween={10}
-                                slidesPerView={10}
-                                breakpoints={{
-                                    320: { slidesPerView: 3 },
-                                    600: { slidesPerView: 5 },
-                                    768: { slidesPerView: 6 },
-                                    1200: { slidesPerView: 10 },
-                                    1500: { slidesPerView: 10 },
-                                }}
-                                navigation={{
-                                    prevEl: prevRef.current,
-                                    nextEl: nextRef.current,
-                                }}
-                                className="swiper-wrapper"
-                                onInit={updateNavigationState}
-                            >
-                                {games.slice(0, 20)?.map((game, index) => (
-                                    <SwiperSlide
-                                        key={`hot-${title}-${name}-${game.id ?? index}-${index}`}
-                                        className="swiper-slide-container"
-                                    >
-                                        <BigGameCard
-                                            id={game.id}
-                                            category="slide"
-                                            provider={title}
-                                            title={game.name}
-                                            imageSrc={
-                                                game.image_local !== null
-                                                    ? contextData.cdnUrl + game.image_local
-                                                    : game.image_url
-                                            }
-                                            onGameClick={() => {
-                                                handleGameClick(game);
-                                            }}
-                                        />
-                                    </SwiperSlide>
-                                ))}
-                            </Swiper>
-                        </div>
-                    </div>
-                </div>
+        <section className="livecasino-lobby col-12 order-4">
+            <div className="section team-section wow fadeIn" data-wow-delay="0.3s">
+                <h3 className="text-left mt-5 mb-4 h1 category-title">{title}</h3>
             </div>
-        </div>
+            <div className="swiper-container swiper-livecasino swiper-initialized swiper-horizontal swiper-backface-hidden">
+                <div
+                    className={`swiper-button-prev ${isPrevDisabled ? "disabled" : ""}`}
+                    onClick={handlePrev}
+                    role="button"
+                    tabIndex={0}
+                    aria-disabled={isPrevDisabled}
+                >
+                    <svg className="swiper-navigation-icon" width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.38296 20.0762C0.111788 19.805 0.111788 19.3654 0.38296 19.0942L9.19758 10.2796L0.38296 1.46497C0.111788 1.19379 0.111788 0.754138 0.38296 0.482966C0.654131 0.211794 1.09379 0.211794 1.36496 0.482966L10.4341 9.55214C10.8359 9.9539 10.8359 10.6053 10.4341 11.007L1.36496 20.0762C1.09379 20.3474 0.654131 20.3474 0.38296 20.0762Z" fill="currentColor"></path></svg>
+                </div>
+                <div
+                    className={`swiper-button-next ${isNextDisabled ? "disabled" : ""}`}
+                    onClick={handleNext}
+                    role="button"
+                    tabIndex={0}
+                    aria-disabled={isNextDisabled}
+                >
+                    <svg className="swiper-navigation-icon" width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.38296 20.0762C0.111788 19.805 0.111788 19.3654 0.38296 19.0942L9.19758 10.2796L0.38296 1.46497C0.111788 1.19379 0.111788 0.754138 0.38296 0.482966C0.654131 0.211794 1.09379 0.211794 1.36496 0.482966L10.4341 9.55214C10.8359 9.9539 10.8359 10.6053 10.4341 11.007L1.36496 20.0762C1.09379 20.3474 0.654131 20.3474 0.38296 20.0762Z" fill="currentColor"></path></svg>
+                </div>
+
+                <Swiper
+                    ref={swiperRef}
+                    modules={[Navigation]}
+                    spaceBetween={20}
+                    slidesPerView={5}
+                    breakpoints={{
+                        320: { slidesPerView: 3.3 },
+                        768: { slidesPerView: 4 },
+                    }}
+                    navigation={{
+                        prevEl: prevRef.current,
+                        nextEl: nextRef.current,
+                    }}
+                    className="swiper-wrapper"
+                    onInit={updateNavigationState}
+                >
+                    {games.slice(0, 20)?.map((game, index) => (
+                        <SwiperSlide
+                            key={`hot-${title}-${name}-${game.id ?? index}-${index}`}
+                            className="swiper-slide hot-slide"
+                        >
+                            <img 
+                                src={game.image_local !== null ? contextData.cdnUrl + game.image_local : game.image_url} 
+                                className="img-fluid img-fluid z-depth-4 rounded cursor-pointer link-item"
+                                onClick={() => handleGameClick(game)}
+                            />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </div>
+        </section>
     );
 };
 
