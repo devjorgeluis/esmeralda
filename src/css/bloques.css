@@ -1,0 +1,141 @@
+/*bloques*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+:root{
+    --purple: #BC8CF2;
+    --black: #000000;
+    --white: #F7F5F2;
+    --grey: #DFDFDE;
+    --main: #0025FF; /*0025FF #FF0000*/
+}
+#blog{
+	width:100%;
+  	height: 250px;
+}
+
+.heading{
+    margin-bottom: 1rem;
+}
+
+.heading h2{
+    text-align: center;
+    padding-top: 1rem;
+    color: #EA1417;
+    font-size: 2rem;
+}
+
+.heading h2 span{
+    position: relative;
+    z-index: 0;
+    color: var(--white);
+  	text-shadow: 1px 1px 2px #dc3545, 0 0 1em #dc3545, 0 0 0.2em #dc3545;
+}
+
+.heading h2 span::before{
+    content: '';
+    position: absolute;
+    bottom: -0.5rem; left: 0;
+    z-index: -1;
+    background: #EA1417;
+    height: 0.2rem;
+    width: 80%;
+    margin-left: 10%;
+}
+
+.blog-slider{
+    position: relative;
+    padding-bottom: 4rem;
+    overflow: hidden; border: 1PX solid var(--main); padding: 30px;
+	box-shadow: inset 0px 0px 25px var(--main); 
+	padding: 0px 30px 60px 30px;
+}
+
+.blog-item{
+    background-color: #222;
+    border: 0.1rem solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.blog-item .image{
+    width: 100%;
+    overflow: hidden; 
+}
+
+.blog-item:hover .image img{
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+}
+
+.blog-item .image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.blog-item .content{
+    padding: 2rem 1rem; border: 1PX solid #FF00ff;
+}
+
+.blog-item .content .intro{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    border-bottom: 0.2rem solid var(--grey);
+    padding: 1rem 0;
+    margin-bottom: 1.5rem; 
+}
+
+.blog-item .content .intro h5{
+    font-size: 1.5rem;
+}
+
+.blog-item .content .intro h5 i{
+    color: var(--grey);
+    padding-right: 0.5rem;
+}
+
+.blog-item .content .intro h5 span{
+    color: var(--grey);
+}
+
+.blog-item .content .main-heading{
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--white);
+}
+
+.blog-item p{
+    padding: 1rem 0;
+    font-size: 1.6rem;
+    color: var(--grey);
+}
+
+.blog-item .btn{
+    margin-top: 1rem;
+}
+.swiper-pagination {
+  top:-30px !important; 
+  position: relative !important;
+}
+.swiper-pagination-bullet{
+    height: 0.5rem;
+    width: 0.5rem;
+    border-radius: 50rem;
+    background-color: var(--grey);
+  	-webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear; 
+}
+
+.swiper-pagination-bullet-active{
+    width: 3rem;
+    background: #EA1417;
+}
+.swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0 4px;
+}

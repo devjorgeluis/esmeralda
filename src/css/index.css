@@ -1,0 +1,66 @@
+#main-logo-top {
+    padding-top: 1px;
+    max-height: 40px;
+}
+.card {
+    border-radius: 20px;
+}
+.double-lobby  .view {
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    border-radius: 20px;
+}
+.double-lobby .view .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    border-bottom: 10px solid #02ff00;
+    border-radius: 20px;
+}
+#social_links {
+    background-color: #02ff00;
+}
+#header-lobby .view .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    border-bottom: 10px solid #02ff00;
+
+}
+.about-page .top-nav-collapse {
+    background: linear-gradient(40deg,#1d6871,#00bcd4)!important;
+}
+.white-skin .navbar .navbar-nav .nav-item a, .white-skin .navbar.double-nav a {
+    font-size: 15px;
+    color: #fff;
+    font-weight: 700;
+}
+.double-nav a.active {
+    color: #fedf00;
+}
+.games-categories-link, .category-title {
+    color: #000000;
+}
+.poker-lobby, .casino-lobby, .livecasino-lobby, .sports-lobby, .double-lobby {
+    margin-top: 0;
+}
+.navbar:not(.top-nav-collapse) {
+    background: linear-gradient(40deg,#052c31,#00bcd4)!important;
+}
+.games-categories-link, .category-title {
+    color: #000000;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.page-footer h6 img {
+    height: 120px;
+}
