@@ -5,9 +5,9 @@ import { AppContext } from "../../AppContext";
 import { LayoutContext } from "./LayoutContext";
 import { callApi } from "../../utils/Utils";
 import Header from "./Header";
-import SupportModal from "../Modal/SupportModal";
 import Footer from "./Footer";
-import LoginModal from "../Modal/LoginModal";
+import SupportModal from "../Modal/SupportModal";
+import MyProfileModal from "../Modal/MyProfileModal";
 import { NavigationContext } from "./NavigationContext";
 import FullDivLoading from "../Loading/FullDivLoading";
 
@@ -22,7 +22,7 @@ const Layout = () => {
     const [supportEmail, setSupportEmail] = useState("");
     const [supportParent, setSupportParent] = useState("");
     const [isSlotsOnly, setIsSlotsOnly] = useState("");
-    const [showLoginModal, setShowLoginModal] = useState(false);
+    const [showMyProfileModal, setShowMyProfileModal] = useState(false);
     const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
     const [showSupportModal, setShowSupportModal] = useState(false);
     const [supportParentOnly, setSupportParentOnly] = useState(false);
@@ -35,6 +35,7 @@ const Layout = () => {
 
     const location = useLocation();
     const isSportsPage = location.pathname === "/sports" || location.pathname === "/live-sports";  
+    const isHomePage = location.pathname === "/" || location.pathname === "/home";
 
     useEffect(() => {
         if (contextData.session != null) {
@@ -71,9 +72,20 @@ const Layout = () => {
         };
     }, []);
 
-    const refreshBalance = () => {
+    useEffect(() => {
+        if (!isHomePage) {
+            document.body.classList.add("white-skin");
+        } else {
+            document.body.classList.remove("white-skin");
+        }
+    }, [isHomePage]);
+
+    const refreshBalance = (callback) => {
         setUserBalance(0);
-        callApi(contextData, "GET", "/get-user-balance", callbackRefreshBalance, null);
+        callApi(contextData, "GET", "/get-user-balance", (result) => {
+            callbackRefreshBalance(result);
+            if (callback) callback();
+        }, null);
     };
 
     const callbackRefreshBalance = (result) => {
@@ -114,7 +126,7 @@ const Layout = () => {
     };
 
     const handleLoginClick = () => {
-        setShowLoginModal(true);
+        navigate("/login");
     };
 
     const openSupportModal = (parentOnly = false) => {
@@ -138,10 +150,9 @@ const Layout = () => {
         }, null);
     };
 
-    const handleLoginSuccess = (balance) => {
-        const parsed = balance ? parseFloat(balance) : 0;
-        setUserBalance(Number.isFinite(parsed) ? parsed : 0);
-    };
+    const handleMyProfileClick = () => {
+        setShowMyProfileModal(true);
+    };    
 
     const layoutContextValue = {
         isLogin,
@@ -163,22 +174,23 @@ const Layout = () => {
             >
                 <>             
                     <FullDivLoading show={showFullDivLoading} />
-                    {showLoginModal && (
-                        <LoginModal
+                    {showMyProfileModal && (
+                        <MyProfileModal
                             isMobile={isMobile}
-                            isOpen={showLoginModal}
-                            onClose={() => setShowLoginModal(false)}
-                            onLoginSuccess={handleLoginSuccess}
+                            isOpen={showMyProfileModal}
+                            onClose={() => setShowMyProfileModal(false)}
                         />
-                    )}
+                    )}                    
                     <Header
                         isLogin={isLogin}
                         isSlotsOnly={isSlotsOnly}
                         userBalance={userBalance}
                         handleLoginClick={handleLoginClick}
                         handleLogoutClick={handleLogoutClick}
+                        handleMyProfileClick={handleMyProfileClick}
                         supportParent={supportParent}
                         openSupportModal={openSupportModal}
+                        refreshBalance={refreshBalance}
                     />
                     {/* Sidebar is rendered inside Header; no duplicate here. */}
                     <Outlet context={{ isSlotsOnly, isLogin, isMobile }} />

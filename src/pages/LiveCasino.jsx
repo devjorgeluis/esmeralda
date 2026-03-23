@@ -4,7 +4,6 @@ import { AppContext } from "../AppContext";
 import { callApi } from "../utils/Utils";
 import Slideshow from "../components/LiveCasino/Slideshow";
 import LiveGameCard from "/src/components/LiveGameCard";
-import LoginModal from "../components/Modal/LoginModal";
 import GameModal from "../components/Modal/GameModal";
 import ProviderModal from "../components/Modal/ProviderModal";
 import ProviderContainer from "../components/ProviderContainer";
@@ -36,7 +35,6 @@ const LiveCasino = () => {
   const [shouldShowGameModal, setShouldShowGameModal] = useState(false);
   const [isLoadingGames, setIsLoadingGames] = useState(false);
   const [showFilterModal, setShowFilterModal] = useState(false);
-  const [showLoginModal, setShowLoginModal] = useState(false);
   const refGameModal = useRef();
   const location = useLocation();
   const { isSlotsOnly, isLogin, isMobile } = useOutletContext();

@@ -11,6 +11,7 @@ import './css/index-min.css'
 import './css/index.css'
 import './css/swiper-bundle-min.css'
 import './css/bloques.css'
+import './css/esmeralda.css'
 
 import App from './App.jsx'
 
