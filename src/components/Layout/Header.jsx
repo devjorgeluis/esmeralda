@@ -2,16 +2,17 @@ import { useState, useRef, useEffect, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { AppContext } from "../../AppContext";
 
-import ImgHome from "/src/assets/svg/home.svg";
-import ImgCasino from "/src/assets/svg/casino.svg";
-import ImgLiveCasino from "/src/assets/svg/live-casino.svg";
-import ImgSports from "/src/assets/svg/sports.svg";
-import ImgLiveSports from "/src/assets/svg/live-sports.svg";
+import ImgHome from "/src/assets/img/home.png";
+import ImgCasino from "/src/assets/img/casino.png";
+import ImgLiveCasino from "/src/assets/img/live-casino.png";
+import ImgSports from "/src/assets/img/sports.png";
+import ImgLiveSports from "/src/assets/img/sports.png";
 
 const Header = ({
     isLogin,
     isSlotsOnly,
     userBalance,
+    supportParent,
     handleLoginClick,
     handleLogoutClick,
     handleMyProfileClick,
@@ -87,36 +88,20 @@ const Header = ({
                 <ul className="custom-scrollbar ps ps--theme_default" data-ps-id="7dd99edb-02e5-67f4-e139-01cacf9476ba">
                     <li>
                         <ul id="sidemenu_global_ul" className="collapsible collapsible-accordion">
-                            <li className="side-menu-li-index">
-                                <a href="index.php" className="collapsible-header waves-effect side-menu-nav-link nav-link-index active">
-                                    <img src="https://cdn.esmeralda.world/images/side_menu/index.png" /><span>Inicio</span>
-                                </a>
-                            </li>
-                            <li className="side-menu-li-sports">
-                                <a href="sports.php" className="collapsible-header waves-effect side-menu-nav-link nav-link-sports">
-                                    <img src="https://cdn.esmeralda.world/images/side_menu/sports.png" /><span>Deportes</span>
-                                </a>
-                            </li>
-                            <li className="side-menu-li-casino">
-                                <a href="casino.php" className="collapsible-header waves-effect side-menu-nav-link nav-link-casino">
-                                    <img src="https://cdn.esmeralda.world/images/side_menu/casino.png" /><span>Slots</span>
-                                </a>
-                            </li>
-                            <li className="side-menu-li-livecasino">
-                                <a href="livecasino.php" className="collapsible-header waves-effect side-menu-nav-link nav-link-livecasino">
-                                    <img src="https://cdn.esmeralda.world/images/side_menu/livecasino.png" /><span>Casino Vivo</span>
-                                </a>
-                            </li>
-                            <li className="side-menu-li-horses">
-                                <a href="horses.php" className="collapsible-header waves-effect side-menu-nav-link nav-link-horses">
-                                    <img src="https://cdn.esmeralda.world/images/side_menu/horses.png" /><span>Caballos</span>
-                                </a>
-                            </li>
-                            <li className="side-menu-li-crazzy_win">
-                                <a href="crazzy_win.php" className="collapsible-header waves-effect side-menu-nav-link nav-link-crazzy_win">
-                                    <img src="https://cdn.esmeralda.world/images/side_menu/crazzy_win.png" /><span>CrazZy Win!</span>
-                                </a>
-                            </li>
+                            {navItems.map((item, idx) => (
+                                <li key={idx}>
+                                    <a
+                                        className={"collapsible-header waves-effect side-menu-nav-link nav-link-index" + (isActive(item.path) ? " active" : "")}
+                                        onClick={() => {
+                                            setSidebarOpen(false);
+                                            navigate(Array.isArray(item.path) ? item.path[item.path.length - 1] : item.path);
+                                        }}
+                                    >
+                                        <img src={item.image} />
+                                        <span>{item.label}</span>
+                                    </a>
+                                </li>
+                            ))}
                         </ul>
                     </li>
                 </ul>
@@ -159,8 +144,8 @@ const Header = ({
                         </li>
                     }
                     <li id="support-nav" className="nav-item dropdown notifications-nav support-nav user-custom-dropdown">
-                        <a className="nav-link waves-effect" id="navbarSupportMenuLink" onClick={() => { openSupportModal(false); }}>
-                            <i className="far fa-comment-dots"></i>
+                        <a className="nav-link waves-effect" id="navbarSupportMenuLink">
+                            <i className="far fa-comment-dots" onClick={() => { openSupportModal(false); }}></i>
                         </a>
                     </li>
                     <li className="nav-item dropdown user-custom-dropdown">
@@ -176,9 +161,19 @@ const Header = ({
                         {
                             isLogin && <>
                                 <div className="dropdown-menu dropdown-menu-right user-profile-dropdown" style={{ display: dropdownOpen && "block" }}>
-                                    <a className="dropdown-item waves-effect waves-light" onClick={handleMyProfileClick}>Mis datos</a>
+                                    <a className="dropdown-item waves-effect waves-light" onClick={() => {
+                                        setDropdownOpen(false);
+                                        handleMyProfileClick();
+                                    }}>Mis datos</a>
                                     <a className="dropdown-item waves-effect waves-light">Historial del Juego</a>
                                     <a className="dropdown-item waves-effect waves-light">Transacciones</a>
+                                    {
+                                        supportParent &&
+                                        <a className="dropdown-item waves-effect waves-light" onClick={() => {
+                                            setDropdownOpen(false);
+                                            openSupportModal(true);
+                                        }}>Soporte 24/7</a>
+                                    }
                                     <a className="dropdown-item waves-effect waves-light" onClick={handleLogoutClick}>Cerrar sesion</a>
                                 </div>
                             </>

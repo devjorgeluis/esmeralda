@@ -6869,7 +6869,7 @@ a.close.disabled {
 .carousel-indicators {
     position: absolute;
     right: 0;
-    bottom: 0;
+    bottom: 30px;
     left: 0;
     z-index: 15;
     display: -ms-flexbox;

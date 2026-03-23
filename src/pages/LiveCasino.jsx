@@ -2,7 +2,7 @@ import { useContext, useState, useEffect, useRef } from "react";
 import { useLocation, useOutletContext, useNavigate } from "react-router-dom";
 import { AppContext } from "../AppContext";
 import { callApi } from "../utils/Utils";
-import Slideshow from "../components/LiveCasino/Slideshow";
+// import Slideshow from "../components/LiveCasino/Slideshow";
 import LiveGameCard from "/src/components/LiveGameCard";
 import GameModal from "../components/Modal/GameModal";
 import ProviderModal from "../components/Modal/ProviderModal";
@@ -372,7 +372,7 @@ const LiveCasino = () => {
       ) : (
         <>
           <div className="home-section-module">
-            <Slideshow />
+            {/* <Slideshow /> */}
 
             <div className="home-section-module-important home-section-module-39 loaded">
               <div className="casino-filters-mobile mobile-item">
