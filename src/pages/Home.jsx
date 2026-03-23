@@ -6,6 +6,7 @@ import { callApi } from "../utils/Utils";
 import Slideshow from "../components/Home/Slideshow";
 import BannerContainer from "../components/Home/BannerContainer";
 import HotGameSlideshow from "../components/Home/HotGameSlideshow";
+import CasinoGameSlideshow from "../components/Home/CasinoGameSlideshow";
 import GameModal from "../components/Modal/GameModal";
 
 let selectedGameId = null;
@@ -153,11 +154,10 @@ const Home = () => {
             <div className="col-12 p-0 m-0 row d-flex">
               <BannerContainer />
               {topGames.length > 0 && (
-                <HotGameSlideshow
+                <CasinoGameSlideshow
                   games={topGames}
                   name="games"
-                  title="Juegos"
-                  icon=""
+                  title="Juegos populares"
                   link="/casino"
                   onGameClick={(game) => {
                     if (isLogin) {
@@ -174,7 +174,6 @@ const Home = () => {
                     games={topArcade}
                     name="arcade"
                     title="Tragamonedas"
-                    icon="cherry"
                     link="/casino"
                     onGameClick={(game) => {
                       if (isLogin) {
@@ -191,7 +190,6 @@ const Home = () => {
                     games={topCasino}
                     name="casino"
                     title="Casino"
-                    icon="cherry"
                     link="/casino"
                     onGameClick={(game) => {
                       if (isLogin) {
@@ -208,7 +206,6 @@ const Home = () => {
                     games={topLiveCasino}
                     name="liveCasino"
                     title="Casino en Vivo"
-                    icon="spades"
                     link="/live-casino"
                     onGameClick={(game) => {
                       if (isLogin) {
