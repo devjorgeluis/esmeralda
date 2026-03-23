@@ -1,0 +1,988 @@
+.cHFlag {
+    --flagsCount: 244;
+    --flagSize: 24.0px;
+    flex-shrink: 0;
+    background-repeat: no-repeat;
+    background-image: var(--flagImageURL);
+    background-position: 0 calc(-151* var(--flagSize));
+    width: var(--flagSize);
+    height: var(--flagSize);
+    background-size: var(--flagSize) calc(var(--flagsCount) * var(--flagSize));
+    overflow: hidden;
+}
+
+.f77 {
+    background-position: 0 calc(-0 * var(--flagSize));
+}
+
+.f78 {
+    background-position: 0 calc(-1 * var(--flagSize));
+}
+
+.f81 {
+    background-position: 0 calc(-2 * var(--flagSize));
+}
+
+.f162430 {
+    background-position: 0 calc(-3 * var(--flagSize));
+}
+
+.f82 {
+    background-position: 0 calc(-4 * var(--flagSize));
+}
+
+.f83 {
+    background-position: 0 calc(-5 * var(--flagSize));
+}
+
+.f84 {
+    background-position: 0 calc(-6 * var(--flagSize));
+}
+
+.f85 {
+    background-position: 0 calc(-7 * var(--flagSize));
+}
+
+.f72 {
+    background-position: 0 calc(-8 * var(--flagSize));
+}
+
+.f73 {
+    background-position: 0 calc(-9 * var(--flagSize));
+}
+
+.f74 {
+    background-position: 0 calc(-10 * var(--flagSize));
+}
+
+.f90 {
+    background-position: 0 calc(-11 * var(--flagSize));
+}
+
+.f88 {
+    background-position: 0 calc(-12 * var(--flagSize));
+}
+
+.f89 {
+    background-position: 0 calc(-13 * var(--flagSize));
+}
+
+.f91 {
+    background-position: 0 calc(-14 * var(--flagSize));
+}
+
+.f92 {
+    background-position: 0 calc(-15 * var(--flagSize));
+}
+
+.f160999 {
+    background-position: 0 calc(-16 * var(--flagSize));
+}
+
+.f345425 {
+    background-position: 0 calc(-17 * var(--flagSize));
+}
+
+.f94 {
+    background-position: 0 calc(-18 * var(--flagSize));
+}
+
+.f95 {
+    background-position: 0 calc(-19 * var(--flagSize));
+}
+
+.f96 {
+    background-position: 0 calc(-20 * var(--flagSize));
+}
+
+.f97 {
+    background-position: 0 calc(-21 * var(--flagSize));
+}
+
+.f98 {
+    background-position: 0 calc(-22 * var(--flagSize));
+}
+
+.f93 {
+    background-position: 0 calc(-23 * var(--flagSize));
+}
+
+.f154175 {
+    background-position: 0 calc(-24 * var(--flagSize));
+}
+
+.f128 {
+    background-position: 0 calc(-25 * var(--flagSize));
+}
+
+.f129 {
+    background-position: 0 calc(-26 * var(--flagSize));
+}
+
+.f210 {
+    background-position: 0 calc(-27 * var(--flagSize));
+}
+
+.f134 {
+    background-position: 0 calc(-28 * var(--flagSize));
+}
+
+.f135 {
+    background-position: 0 calc(-29 * var(--flagSize));
+}
+
+.f136 {
+    background-position: 0 calc(-30 * var(--flagSize));
+}
+
+.f137 {
+    background-position: 0 calc(-31 * var(--flagSize));
+}
+
+.f207 {
+    background-position: 0 calc(-32 * var(--flagSize));
+}
+
+.f138 {
+    background-position: 0 calc(-33 * var(--flagSize));
+}
+
+.f132 {
+    background-position: 0 calc(-34 * var(--flagSize));
+}
+
+.f209 {
+    background-position: 0 calc(-35 * var(--flagSize));
+}
+
+.f111 {
+    background-position: 0 calc(-36 * var(--flagSize));
+}
+
+.f112 {
+    background-position: 0 calc(-37 * var(--flagSize));
+}
+
+.f214 {
+    background-position: 0 calc(-38 * var(--flagSize));
+}
+
+.f114 {
+    background-position: 0 calc(-39 * var(--flagSize));
+}
+
+.f178 {
+    background-position: 0 calc(-40 * var(--flagSize));
+}
+
+.f80 {
+    background-position: 0 calc(-41 * var(--flagSize));
+}
+
+.f215 {
+    background-position: 0 calc(-42 * var(--flagSize));
+}
+
+.f157678 {
+    background-position: 0 calc(-43 * var(--flagSize));
+}
+
+.f113 {
+    background-position: 0 calc(-44 * var(--flagSize));
+}
+
+.f203 {
+    background-position: 0 calc(-45 * var(--flagSize));
+}
+
+.f205 {
+    background-position: 0 calc(-46 * var(--flagSize));
+}
+
+.f206 {
+    background-position: 0 calc(-47 * var(--flagSize));
+}
+
+.f110 {
+    background-position: 0 calc(-48 * var(--flagSize));
+}
+
+.f105 {
+    background-position: 0 calc(-49 * var(--flagSize));
+}
+
+.f103 {
+    background-position: 0 calc(-50 * var(--flagSize));
+}
+
+.f106 {
+    background-position: 0 calc(-51 * var(--flagSize));
+}
+
+.f109 {
+    background-position: 0 calc(-52 * var(--flagSize));
+}
+
+.f104 {
+    background-position: 0 calc(-53 * var(--flagSize));
+}
+
+.f107 {
+    background-position: 0 calc(-54 * var(--flagSize));
+}
+
+.f108 {
+    background-position: 0 calc(-55 * var(--flagSize));
+}
+
+.f100 {
+    background-position: 0 calc(-56 * var(--flagSize));
+}
+
+.f123 {
+    background-position: 0 calc(-57 * var(--flagSize));
+}
+
+.f117 {
+    background-position: 0 calc(-58 * var(--flagSize));
+}
+
+.f118 {
+    background-position: 0 calc(-59 * var(--flagSize));
+}
+
+.f121 {
+    background-position: 0 calc(-60 * var(--flagSize));
+}
+
+.f120 {
+    background-position: 0 calc(-61 * var(--flagSize));
+}
+
+.f122 {
+    background-position: 0 calc(-62 * var(--flagSize));
+}
+
+.f116 {
+    background-position: 0 calc(-63 * var(--flagSize));
+}
+
+.f125 {
+    background-position: 0 calc(-64 * var(--flagSize));
+}
+
+.f222 {
+    background-position: 0 calc(-65 * var(--flagSize));
+}
+
+.f223 {
+    background-position: 0 calc(-66 * var(--flagSize));
+}
+
+.f119 {
+    background-position: 0 calc(-67 * var(--flagSize));
+}
+
+.f127 {
+    background-position: 0 calc(-68 * var(--flagSize));
+}
+
+.f131 {
+    background-position: 0 calc(-69 * var(--flagSize));
+}
+
+.f139 {
+    background-position: 0 calc(-70 * var(--flagSize));
+}
+
+.f140 {
+    background-position: 0 calc(-71 * var(--flagSize));
+}
+
+.f141 {
+    background-position: 0 calc(-72 * var(--flagSize));
+}
+
+.f142 {
+    background-position: 0 calc(-73 * var(--flagSize));
+}
+
+.f143 {
+    background-position: 0 calc(-74 * var(--flagSize));
+}
+
+.f144 {
+    background-position: 0 calc(-75 * var(--flagSize));
+}
+
+.f145 {
+    background-position: 0 calc(-76 * var(--flagSize));
+}
+
+.f163784 {
+    background-position: 0 calc(-77 * var(--flagSize));
+}
+
+.f146 {
+    background-position: 0 calc(-78 * var(--flagSize));
+}
+
+.f147 {
+    background-position: 0 calc(-79 * var(--flagSize));
+}
+
+.f159746 {
+    background-position: 0 calc(-80 * var(--flagSize));
+}
+
+.f149 {
+    background-position: 0 calc(-81 * var(--flagSize));
+}
+
+.f154 {
+    background-position: 0 calc(-82 * var(--flagSize));
+}
+
+.f167805 {
+    background-position: 0 calc(-83 * var(--flagSize));
+}
+
+.f208 {
+    background-position: 0 calc(-84 * var(--flagSize));
+}
+
+.f150 {
+    background-position: 0 calc(-85 * var(--flagSize));
+}
+
+.f153 {
+    background-position: 0 calc(-86 * var(--flagSize));
+}
+
+.f155 {
+    background-position: 0 calc(-87 * var(--flagSize));
+}
+
+.f156 {
+    background-position: 0 calc(-88 * var(--flagSize));
+}
+
+.f158 {
+    background-position: 0 calc(-89 * var(--flagSize));
+}
+
+.f160 {
+    background-position: 0 calc(-90 * var(--flagSize));
+}
+
+.f164597 {
+    background-position: 0 calc(-91 * var(--flagSize));
+}
+
+.f157 {
+    background-position: 0 calc(-92 * var(--flagSize));
+}
+
+.f161 {
+    background-position: 0 calc(-93 * var(--flagSize));
+}
+
+.f164 {
+    background-position: 0 calc(-94 * var(--flagSize));
+}
+
+.f165 {
+    background-position: 0 calc(-95 * var(--flagSize));
+}
+
+.f166 {
+    background-position: 0 calc(-96 * var(--flagSize));
+}
+
+.f167 {
+    background-position: 0 calc(-97 * var(--flagSize));
+}
+
+.f168 {
+    background-position: 0 calc(-98 * var(--flagSize));
+}
+
+.f169 {
+    background-position: 0 calc(-99 * var(--flagSize));
+}
+
+.f204 {
+    background-position: 0 calc(-100 * var(--flagSize));
+}
+
+.f170 {
+    background-position: 0 calc(-101 * var(--flagSize));
+}
+
+.f171 {
+    background-position: 0 calc(-102 * var(--flagSize));
+}
+
+.f172 {
+    background-position: 0 calc(-103 * var(--flagSize));
+}
+
+.f173 {
+    background-position: 0 calc(-104 * var(--flagSize));
+}
+
+.f130 {
+    background-position: 0 calc(-105 * var(--flagSize));
+}
+
+.f176 {
+    background-position: 0 calc(-106 * var(--flagSize));
+}
+
+.f174 {
+    background-position: 0 calc(-107 * var(--flagSize));
+}
+
+.f175 {
+    background-position: 0 calc(-108 * var(--flagSize));
+}
+
+.f179 {
+    background-position: 0 calc(-109 * var(--flagSize));
+}
+
+.f177 {
+    background-position: 0 calc(-110 * var(--flagSize));
+}
+
+.f180 {
+    background-position: 0 calc(-111 * var(--flagSize));
+}
+
+.f213 {
+    background-position: 0 calc(-112 * var(--flagSize));
+}
+
+.f117033 {
+    background-position: 0 calc(-113 * var(--flagSize));
+}
+
+.f183 {
+    background-position: 0 calc(-114 * var(--flagSize));
+}
+
+.f184 {
+    background-position: 0 calc(-115 * var(--flagSize));
+}
+
+.f186 {
+    background-position: 0 calc(-116 * var(--flagSize));
+}
+
+.f187 {
+    background-position: 0 calc(-117 * var(--flagSize));
+}
+
+.f216 {
+    background-position: 0 calc(-118 * var(--flagSize));
+}
+
+.f218 {
+    background-position: 0 calc(-119 * var(--flagSize));
+}
+
+.f220 {
+    background-position: 0 calc(-120 * var(--flagSize));
+}
+
+.f221 {
+    background-position: 0 calc(-121 * var(--flagSize));
+}
+
+.f219 {
+    background-position: 0 calc(-122 * var(--flagSize));
+}
+
+.f124 {
+    background-position: 0 calc(-123 * var(--flagSize));
+}
+
+.f168109 {
+    background-position: 0 calc(-124 * var(--flagSize));
+}
+
+.f150590 {
+    background-position: 0 calc(-125 * var(--flagSize));
+}
+
+.f212 {
+    background-position: 0 calc(-126 * var(--flagSize));
+}
+
+.f211 {
+    background-position: 0 calc(-127 * var(--flagSize));
+}
+
+.f185 {
+    background-position: 0 calc(-128 * var(--flagSize));
+}
+
+.f175063 {
+    background-position: 0 calc(-129 * var(--flagSize));
+}
+
+.f191 {
+    background-position: 0 calc(-130 * var(--flagSize));
+}
+
+.f189 {
+    background-position: 0 calc(-131 * var(--flagSize));
+}
+
+.f193 {
+    background-position: 0 calc(-132 * var(--flagSize));
+}
+
+.f194 {
+    background-position: 0 calc(-133 * var(--flagSize));
+}
+
+.f196 {
+    background-position: 0 calc(-134 * var(--flagSize));
+}
+
+.f195 {
+    background-position: 0 calc(-135 * var(--flagSize));
+}
+
+.f197 {
+    background-position: 0 calc(-136 * var(--flagSize));
+}
+
+.f199 {
+    background-position: 0 calc(-137 * var(--flagSize));
+}
+
+.f200 {
+    background-position: 0 calc(-138 * var(--flagSize));
+}
+
+.f99 {
+    background-position: 0 calc(-139 * var(--flagSize));
+}
+
+.f188 {
+    background-position: 0 calc(-140 * var(--flagSize));
+}
+
+.f201 {
+    background-position: 0 calc(-141 * var(--flagSize));
+}
+
+.f198 {
+    background-position: 0 calc(-142 * var(--flagSize));
+}
+
+.f101 {
+    background-position: 0 calc(-143 * var(--flagSize));
+}
+
+.f102 {
+    background-position: 0 calc(-144 * var(--flagSize));
+}
+
+.f202 {
+    background-position: 0 calc(-145 * var(--flagSize));
+}
+
+.f126 {
+    background-position: 0 calc(-146 * var(--flagSize));
+}
+
+.f115 {
+    background-position: 0 calc(-147 * var(--flagSize));
+}
+
+.f152 {
+    background-position: 0 calc(-148 * var(--flagSize));
+}
+
+.f87 {
+    background-position: 0 calc(-149 * var(--flagSize));
+}
+
+.f76 {
+    background-position: 0 calc(-150 * var(--flagSize));
+}
+
+.f86 {
+    background-position: 0 calc(-151 * var(--flagSize));
+}
+
+.f79 {
+    background-position: 0 calc(-152 * var(--flagSize));
+}
+
+.f75 {
+    background-position: 0 calc(-153 * var(--flagSize));
+}
+
+.f205550 {
+    background-position: 0 calc(-154 * var(--flagSize));
+}
+
+.f181 {
+    background-position: 0 calc(-155 * var(--flagSize));
+}
+
+.f182 {
+    background-position: 0 calc(-156 * var(--flagSize));
+}
+
+.f163 {
+    background-position: 0 calc(-157 * var(--flagSize));
+}
+
+.f217 {
+    background-position: 0 calc(-158 * var(--flagSize));
+}
+
+.f151 {
+    background-position: 0 calc(-159 * var(--flagSize));
+}
+
+.f159 {
+    background-position: 0 calc(-160 * var(--flagSize));
+}
+
+.f360247 {
+    background-position: 0 calc(-161 * var(--flagSize));
+}
+
+.f162 {
+    background-position: 0 calc(-162 * var(--flagSize));
+}
+
+.f194348 {
+    background-position: 0 calc(-163 * var(--flagSize));
+}
+
+.f192825 {
+    background-position: 0 calc(-164 * var(--flagSize));
+}
+
+.f133 {
+    background-position: 0 calc(-165 * var(--flagSize));
+}
+
+.f153424 {
+    background-position: 0 calc(-166 * var(--flagSize));
+}
+
+.f221797 {
+    background-position: 0 calc(-167 * var(--flagSize));
+}
+
+.f148 {
+    background-position: 0 calc(-168 * var(--flagSize));
+}
+
+.f192609 {
+    background-position: 0 calc(-169 * var(--flagSize));
+}
+
+.f191778 {
+    background-position: 0 calc(-170 * var(--flagSize));
+}
+
+.f190 {
+    background-position: 0 calc(-171 * var(--flagSize));
+}
+
+.f218572 {
+    background-position: 0 calc(-172 * var(--flagSize));
+}
+
+.f269102 {
+    background-position: 0 calc(-173 * var(--flagSize));
+}
+
+.f300147 {
+    background-position: 0 calc(-174 * var(--flagSize));
+}
+
+.f301347 {
+    background-position: 0 calc(-175 * var(--flagSize));
+}
+
+.f251264 {
+    background-position: 0 calc(-176 * var(--flagSize));
+}
+
+.f227248 {
+    background-position: 0 calc(-177 * var(--flagSize));
+}
+
+.f211524 {
+    background-position: 0 calc(-178 * var(--flagSize));
+}
+
+.f211526 {
+    background-position: 0 calc(-179 * var(--flagSize));
+}
+
+.f211525 {
+    background-position: 0 calc(-180 * var(--flagSize));
+}
+
+.f211528 {
+    background-position: 0 calc(-181 * var(--flagSize));
+}
+
+.f2877 {
+    background-position: 0 calc(-182 * var(--flagSize));
+}
+
+.f211529 {
+    background-position: 0 calc(-183 * var(--flagSize));
+}
+
+.f211530 {
+    background-position: 0 calc(-184 * var(--flagSize));
+}
+
+.f249061 {
+    background-position: 0 calc(-185 * var(--flagSize));
+}
+
+.f252906 {
+    background-position: 0 calc(-186 * var(--flagSize));
+}
+
+.f2459 {
+    background-position: 0 calc(-187 * var(--flagSize));
+}
+
+.f306716 {
+    background-position: 0 calc(-188 * var(--flagSize));
+}
+
+.f313153 {
+    background-position: 0 calc(-189 * var(--flagSize));
+}
+
+.f345534 {
+    background-position: 0 calc(-190 * var(--flagSize));
+}
+
+.f384246 {
+    background-position: 0 calc(-191 * var(--flagSize));
+}
+
+.f380627 {
+    background-position: 0 calc(-192 * var(--flagSize));
+}
+
+.f310630 {
+    background-position: 0 calc(-193 * var(--flagSize));
+}
+
+.f330686 {
+    background-position: 0 calc(-194 * var(--flagSize));
+}
+
+.f330687 {
+    background-position: 0 calc(-195 * var(--flagSize));
+}
+
+.f211531 {
+    background-position: 0 calc(-196 * var(--flagSize));
+}
+
+.f410725 {
+    background-position: 0 calc(-197 * var(--flagSize));
+}
+
+.f368333 {
+    background-position: 0 calc(-198 * var(--flagSize));
+}
+
+.f2694 {
+    background-position: 0 calc(-199 * var(--flagSize));
+}
+
+.f2843 {
+    background-position: 0 calc(-200 * var(--flagSize));
+}
+
+.f256652 {
+    background-position: 0 calc(-201 * var(--flagSize));
+}
+
+.f318836 {
+    background-position: 0 calc(-202 * var(--flagSize));
+}
+
+.f330688 {
+    background-position: 0 calc(-203 * var(--flagSize));
+}
+
+.f330690 {
+    background-position: 0 calc(-204 * var(--flagSize));
+}
+
+.f330691 {
+    background-position: 0 calc(-205 * var(--flagSize));
+}
+
+.f330692 {
+    background-position: 0 calc(-206 * var(--flagSize));
+}
+
+.f330693 {
+    background-position: 0 calc(-207 * var(--flagSize));
+}
+
+.f367228 {
+    background-position: 0 calc(-208 * var(--flagSize));
+}
+
+.f410740 {
+    background-position: 0 calc(-209 * var(--flagSize));
+}
+
+.f410750 {
+    background-position: 0 calc(-210 * var(--flagSize));
+}
+
+.f414769 {
+    background-position: 0 calc(-211 * var(--flagSize));
+}
+
+.f2830 {
+    background-position: 0 calc(-212 * var(--flagSize));
+}
+
+.f269562 {
+    background-position: 0 calc(-213 * var(--flagSize));
+}
+
+.f320642 {
+    background-position: 0 calc(-214 * var(--flagSize));
+}
+
+.f429707 {
+    background-position: 0 calc(-215 * var(--flagSize));
+}
+
+.f2874 {
+    background-position: 0 calc(-216 * var(--flagSize));
+}
+
+.f416739 {
+    background-position: 0 calc(-217 * var(--flagSize));
+}
+
+.f2870 {
+    background-position: 0 calc(-218 * var(--flagSize));
+}
+
+.f442885 {
+    background-position: 0 calc(-219 * var(--flagSize));
+}
+
+.f382377 {
+    background-position: 0 calc(-220 * var(--flagSize));
+}
+
+.f494968 {
+    background-position: 0 calc(-221 * var(--flagSize));
+}
+
+.f317857 {
+    background-position: 0 calc(-222 * var(--flagSize));
+}
+
+.f363453 {
+    background-position: 0 calc(-223 * var(--flagSize));
+}
+
+.f3126 {
+    background-position: 0 calc(-224 * var(--flagSize));
+}
+
+.f491910 {
+    background-position: 0 calc(-225 * var(--flagSize));
+}
+
+.f431288 {
+    background-position: 0 calc(-226 * var(--flagSize));
+}
+
+.f562890 {
+    background-position: 0 calc(-227 * var(--flagSize));
+}
+
+.f3085 {
+    background-position: 0 calc(-228 * var(--flagSize));
+}
+
+.f508883 {
+    background-position: 0 calc(-229 * var(--flagSize));
+}
+
+.f390057 {
+    background-position: 0 calc(-230 * var(--flagSize));
+}
+
+.f677709 {
+    background-position: 0 calc(-231 * var(--flagSize));
+}
+
+.f522433 {
+    background-position: 0 calc(-232 * var(--flagSize));
+}
+
+.f68 {
+    background-position: 0 calc(-233 * var(--flagSize));
+}
+
+.f69 {
+    background-position: 0 calc(-234 * var(--flagSize));
+}
+
+.f71 {
+    background-position: 0 calc(-235 * var(--flagSize));
+}
+
+.f662271 {
+    background-position: 0 calc(-236 * var(--flagSize));
+}
+
+.f600458 {
+    background-position: 0 calc(-237 * var(--flagSize));
+}
+
+.f562813 {
+    background-position: 0 calc(-238 * var(--flagSize));
+}
+
+.f562815 {
+    background-position: 0 calc(-239 * var(--flagSize));
+}
+
+.f562814 {
+    background-position: 0 calc(-240 * var(--flagSize));
+}
+
+.f2524 {
+    background-position: 0 calc(-241 * var(--flagSize));
+}
+
+.f593441 {
+    background-position: 0 calc(-242 * var(--flagSize));
+}
+
+.f695275 {
+    background-position: 0 calc(-243 * var(--flagSize));
+}
