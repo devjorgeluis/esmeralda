@@ -72,7 +72,7 @@ const HotGameSlideshow = ({ games, name, title, onGameClick }) => {
             <div className="section team-section wow fadeIn" data-wow-delay="0.3s">
                 <h3 className="text-left mt-5 mb-4 h1 category-title">{title}</h3>
             </div>
-            <div className="swiper-container swiper-livecasino swiper-initialized swiper-horizontal swiper-backface-hidden">
+            <div className="swiper-container swiper-livecasino swiper-initialized swiper-horizontal">
                 <div
                     className={`swiper-button-prev ${isPrevDisabled ? "disabled" : ""}`}
                     onClick={handlePrev}
@@ -98,8 +98,9 @@ const HotGameSlideshow = ({ games, name, title, onGameClick }) => {
                     spaceBetween={20}
                     slidesPerView={5}
                     breakpoints={{
-                        320: { slidesPerView: 3.3 },
-                        768: { slidesPerView: 4 },
+                        320: { slidesPerView: 3.3, spaceBetween: 20 },
+                        768: { slidesPerView: 4, spaceBetween: 30 },
+                        1200: { slidesPerView: 5, spaceBetween: 40 },
                     }}
                     navigation={{
                         prevEl: prevRef.current,

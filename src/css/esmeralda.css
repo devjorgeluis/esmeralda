@@ -556,47 +556,6 @@ a {
     }
 }
 
-@media (min-width: 1200px) {
-    .swiper-grid > .swiper-wrapper {
-        display: flex;
-    }
-
-    .home-section-module .home-section-module-4 .dw-home-featured-games .swiper-featured-games .swiper-container .swiper-slide:nth-child(10),
-    .home-section-module .home-section-module-4 .dw-home-featured-games .swiper-featured-games .swiper-container .swiper-slide:nth-child(20) {
-        margin-right: 0 !important;
-    }
-}
-
-@media (max-width: 1200px) {
-    .home-section-module .home-section-module-4 .dw-home-featured-games .swiper-featured-games .swiper-container .swiper-wrapper {
-        flex-wrap: nowrap;
-    }
-
-    .home-section-module .home-section-module-4 .dw-home-featured-games .swiper-featured-games .swiper-container .swiper-slide {
-        margin-top: 0 !important;
-    }
-}
-
-.home-section-module .home-section-module-1 .swiper-container .swiper-button-prev {
-    left: 2%;
-}
-
-.home-section-module .home-section-module-1 .swiper-container .swiper-button-next {
-    right: 2%;
-}
-
-
-@media (max-width: 480px) {
-    .home-section-module .home-section-module-1 .swiper-button-prev, .home-section-module .home-section-module-1 .swiper-button-next {
-        font-size: 28px;
-    }
-}
-
-.swiper-button-prev,
-.swiper-button-next {
-  color: unset!important
-}
-
 .btn-close {
     position: absolute;
     right: 10px;
@@ -764,12 +723,46 @@ a {
 }
 
 .hot-slide img {
-    height: 180px !important;
+    height: 364px !important;
     object-fit: cover;
 }
 
 @media (max-width: 575px) {
-    .fixed-sn main, .hidden-sn main {
-        /* padding-top: 21px; */
+    .hot-slide img {
+        height: 180px !important;
     }
+}
+
+section .swiper-container {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+}
+
+section .swiper-button-prev, section .swiper-container-rtl .swiper-button-next {
+    left: 10px !important;
+    right: auto;
+}
+
+section .swiper-button-next, section .swiper-container-rtl .swiper-button-prev {
+    right: 10px !important;
+    left: auto;
+}
+
+section .swiper-button-prev, section .swiper-button-next {
+    position: absolute;
+    top: 40% !important;
+    width: calc(var(--swiper-navigation-size) / 44 * 27);
+    height: var(--swiper-navigation-size);
+    margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
+    z-index: 10;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--swiper-navigation-color, var(--swiper-theme-color));
 }
