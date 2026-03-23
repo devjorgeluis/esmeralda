@@ -1,71 +1,59 @@
 import { useNavigate } from "react-router-dom";
-import { useOutletContext } from "react-router-dom";
-
-import ImgCasino from "/src/assets/img/casino-item.jpg";
-import ImgLiveCasino from "/src/assets/img/live-casino-item.jpg";
-import ImgSport from "/src/assets/img/sports-item.jpg";
-import ImgMobileCasino from "/src/assets/img/mobile-casino-item.jpg";
-import ImgMobileLiveCasino from "/src/assets/img/mobile-live-casino-item.jpg";
-import ImgMobileSport from "/src/assets/img/mobile-sports-item.jpg";
+import ImgCasino from "/src/assets/img/casino-item.png";
+import ImgLiveCasino from "/src/assets/img/live-casino-item.png";
+import ImgSport from "/src/assets/img/sports-item.png";
 
 const BannerContainer = ({ isSlotsOnly }) => {
     const navigate = useNavigate();
-    const { isMobile } = useOutletContext();
     const isSlotsOnlyMode = isSlotsOnly === "true" || isSlotsOnly === true;
-
-    const menuItems = !isSlotsOnlyMode ? [
-        {
-            id: 'casino',
-            name: 'Casino',
-            image: isMobile ? ImgMobileCasino : ImgCasino,
-            href: '/casino'
-        },
-        {
-            id: 'live-casino',
-            name: 'Casino En Vivo',
-            image: isMobile ? ImgMobileLiveCasino : ImgLiveCasino,
-            href: '/live-casino',
-        },
-        {
-            id: 'sports',
-            name: 'Deportes',
-            image: isMobile ? ImgMobileSport : ImgSport,
-            href: '/sports'
-        }
-    ] : [
-        {
-            id: 'casino',
-            name: 'Casino',
-            image: isMobile ? ImgMobileCasino : ImgCasino,
-            href: '/casino'
-        }
-    ];
 
     return (
         <>
-            <div className="home-section-module-important home-section-module-3 loaded">
-                <div className="home-section-module-container">
-                    <div className="dw-home-middle">
-                        {menuItems.map((menu, index) => (
-                            <div className="dw-item-figure" key={index}>
-                                <figure>
-                                    <img src={menu.image} alt={menu.name} />
-                                    <div className="over-hover">
-                                        <section>
-                                            <div className="over-hover-bottom">
-                                                <button className="btn btn-theme" onClick={() => navigate(menu.href)}>
-                                                    <span>{menu.name}</span>
-                                                </button>
-                                            </div>
-                                        </section>
-                                    </div>
-                                    <a onClick={() => navigate(menu.href)}></a>
-                                </figure>
-                            </div>
-                        ))}
-                    </div>
+            <section id="double-lobby" data-section="livecasino" className="double-lobby col-12">
+                <div className="section team-section wow fadeIn" data-wow-delay="0.3s">
+                    <h2 className="text-left mt-5 mb-4 h1 category-title ">Nuestra selección para tí</h2>
                 </div>
-            </div>
+                <div className="row">
+                    <div className="col-md-6 mb-4">
+                        <div className="card collection-card z-depth-4">
+                            <div className="view zoom cursor-pointer link-item accept-guest" onClick={() => navigate("/casino")}>
+                                <img id="double-rectangle-1" src={ImgCasino} className="img-fluid z-depth-4 rounded" />
+                                <div className="mask p-3">
+                                    <p className="title-action">GRAND<br />CASINO ROULETTE</p>
+                                    <p className="grey-text text-action">En vivo desde los<br />mas grandes Casinos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {
+                        !isSlotsOnlyMode && 
+                        <div className="col-md-6 mb-4">
+                            <div className="card collection-card z-depth-4">
+                                <div className="view zoom cursor-pointer link-item accept-guest" onClick={() => navigate("/live-casino")}>
+                                    <img id="double-rectangle-2" src={ImgLiveCasino} className="img-fluid z-depth-4 rounded" />
+                                    <div className="mask p-3">
+                                        <p className="title-action">BLACKJACK Y<br />BACCARAT</p>
+                                        <p className="grey-text text-action">Los más completos <br />Juegos de carta</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </section>
+            {
+                !isSlotsOnlyMode && 
+                <section id="sports-lobby" data-section="sports" className="sports-lobby col-12 order-2">
+                    <div className="section team-section wow fadeIn" data-wow-delay="0.3s">
+                        <h2 className="text-left mt-5 mb-4 h1 category-title ">Deportivas</h2>
+                    </div>
+                    <div className="row" onClick={() => navigate("/sports")}>
+                        <div className="col-lg-12 col-md-12 mb-12">
+                            <img src={ImgSport} className="img-fluid z-depth-3 rounded hoverable cursor-pointer link-item" />
+                        </div>
+                    </div>
+                </section>
+            }
         </>
     )
 }

@@ -6,7 +6,7 @@ import { callApi } from "../utils/Utils";
 import Slideshow from "../components/Home/Slideshow";
 import CategoryContainer from "../components/CategoryContainer";
 import ProviderContainer from "../components/ProviderContainer";
-// import BannerContainer from "../components/Home/BannerContainer";
+import BannerContainer from "../components/Home/BannerContainer";
 import HotGameSlideshow from "../components/Home/HotGameSlideshow";
 import GameModal from "../components/Modal/GameModal";
 import ProviderModal from "../components/Modal/ProviderModal";
@@ -595,8 +595,14 @@ const Home = () => {
           isMobile={isMobile}
         />
       ) : (
-        <>
+        <main>
           <Slideshow />
+
+          <div className="container px-0 pb-5">
+            <div className="col-12 p-0 m-0 row d-flex">
+              <BannerContainer />
+            </div>
+          </div>
 
           <div className="home-section-module-important home-section-module-39 loaded">
             <div className="casino-filters-mobile mobile-item">
@@ -885,7 +891,7 @@ const Home = () => {
               )} */}
             </div>
           </div>
-        </>
+        </main>
       )}
     </>
   );
