@@ -28,7 +28,7 @@ const GameCard = (props) => {
             <div className="heart-in-game">
                 <i className="fas fa-heart color-uncheck fa-lg"></i>
             </div>
-            <img src={props.imageSrc} className="img-fluid z-depth-1"></img>
+            <img src={props.imageSrc} className="img-fluid z-depth-1" title={props.title}></img>
             <div className="footer-name">{props.title}</div>
             <div className="mask flex-center waves-effect waves-light">
                 <p className="white-text"><i className="far fa-play-circle"></i></p>

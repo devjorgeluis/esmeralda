@@ -1,5 +1,4 @@
 .jarallax {
-    min-height: inherit;
     height: calc(100vw / 3.65)
 }
 
@@ -8,10 +7,8 @@
 }
 
 #banner_container {
-    background-image: url('');
     background-repeat: no-repeat;
     background-position: center;
-    height: calc(100vw / 4.63);
     background-size: contain
 }
 
@@ -190,6 +187,16 @@
     min-height: 50vh
 }
 
+.live-casino #games_container {
+    padding-top: .3rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    min-height: auto;
+}
+
 #games_container img {
     min-width: 120px;
     min-height: 100px;
@@ -351,7 +358,7 @@
     text-align: center;
     background-image: linear-gradient(#333, #111);
     border-radius: 6px;
-    margin-left: 1px;
+    margin-left: 2px;
     margin-right: 2px;
     font-size: 12px;
     max-width: 90px;
@@ -359,6 +366,10 @@
     overflow: hidden;
     white-space: nowrap;
     border-right: none;
+}
+
+.casino.live-casino .cat-list-item {
+    max-width: unset;
 }
 
 .casino .cat-list-item:hover,.btn-list-item:hover {

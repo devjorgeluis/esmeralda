@@ -2,14 +2,12 @@ import { useContext, useState, useEffect, useRef } from "react";
 import { useLocation, useOutletContext, useNavigate } from "react-router-dom";
 import { AppContext } from "../AppContext";
 import { callApi } from "../utils/Utils";
-// import Slideshow from "../components/LiveCasino/Slideshow";
 import LiveGameCard from "/src/components/LiveGameCard";
 import GameModal from "../components/Modal/GameModal";
-import ProviderModal from "../components/Modal/ProviderModal";
 import ProviderContainer from "../components/ProviderContainer";
 import SearchInput from "../components/SearchInput";
 import LoadApi from "../components/Loading/LoadApi";
-import Img777 from "/src/assets/svg/casino.svg";
+import ImgBg from "/src/assets/img/bg-live-casino.png";
 
 let selectedGameId = null;
 let selectedGameType = null;
@@ -34,7 +32,6 @@ const LiveCasino = () => {
   const [gameUrl, setGameUrl] = useState("");
   const [shouldShowGameModal, setShouldShowGameModal] = useState(false);
   const [isLoadingGames, setIsLoadingGames] = useState(false);
-  const [showFilterModal, setShowFilterModal] = useState(false);
   const refGameModal = useRef();
   const location = useLocation();
   const { isSlotsOnly, isLogin, isMobile } = useOutletContext();
@@ -69,18 +66,18 @@ const LiveCasino = () => {
     const isSlotsOnlyFalse = isSlotsOnly === false || isSlotsOnly === "false";
     let tmpTags = isSlotsOnlyFalse
       ? [
-        { name: "Lobby", code: "home", icon: "icon-all" },
-        { name: "Hot", code: "hot", icon: "icon-favorites" },
-        { name: "Jokers", code: "joker", icon: "icon-videopoker" },
-        { name: "Ruletas", code: "roulette", icon: "icon-table" },
-        { name: "Crash", code: "arcade", icon: "icon-crash" },
-        { name: "Megaways", code: "megaways", icon: "icon-instant" },
+        { name: "Lobby", code: "home" },
+        { name: "Hot", code: "hot" },
+        { name: "Jokers", code: "joker" },
+        { name: "Ruletas", code: "roulette" },
+        { name: "Crash", code: "arcade" },
+        { name: "Megaways", code: "megaways" },
       ]
       : [
-        { name: "Lobby", code: "home", icon: "icon-all" },
-        { name: "Hot", code: "hot", icon: "icon-favorites" },
-        { name: "Jokers", code: "joker", icon: "icon-videopoker" },
-        { name: "Megaways", code: "megaways", icon: "icon-instant" },
+        { name: "Lobby", code: "home" },
+        { name: "Hot", code: "hot" },
+        { name: "Jokers", code: "joker" },
+        { name: "Megaways", code: "megaways" },
       ];
 
     setTags(tmpTags);
@@ -128,14 +125,6 @@ const LiveCasino = () => {
     }
   };
 
-  const handleCategorySelect = (category) => {
-    setActiveCategory(category);
-    setSelectedProvider(null);
-    setShowFilterModal(false);
-    setIsLoadingGames(false);
-    setTxtSearch("");
-  };
-
   const loadMoreGames = () => {
     if (!activeCategory) return;
     setIsLoadingGames(true);
@@ -143,7 +132,7 @@ const LiveCasino = () => {
   };
 
   const fetchContent = (category, categoryId, tableName, categoryIndex, resetCurrentPage, pageGroupCode) => {
-    let pageSize = 30;
+    let pageSize = 20;
     setIsLoadingGames(true);
 
     if (resetCurrentPage) {
@@ -332,7 +321,7 @@ const LiveCasino = () => {
     setGames([]);
     setIsLoadingGames(true);
 
-    let pageSize = 30;
+    let pageSize = 20;
 
     callApi(
       contextData,
@@ -371,51 +360,32 @@ const LiveCasino = () => {
         />
       ) : (
         <>
-          <div className="home-section-module">
-            {/* <Slideshow /> */}
-
-            <div className="home-section-module-important home-section-module-39 loaded">
-              <div className="casino-filters-mobile mobile-item">
-                <div className="SearchContainer">
-                  <SearchInput
-                    txtSearch={txtSearch}
-                    setTxtSearch={setTxtSearch}
-                    searchRef={searchRef}
-                    search={search}
-                    isMobile={isMobile}
-                  />
-                </div>
-                <div className="btn filter-all provider-item" onClick={() => setShowFilterModal(true)}>
-                  <img src={Img777} />
-                  <span className="name">Proveedores</span>
-                </div>
+          <main id="main" className="casino live-casino">
+            <div className="col-12 px-0 text-center" id="banner_container">
+              <img src={ImgBg} />
+            </div>
+            <div className="col-12 cat-list px-0" id="games_categories">
+              <div className="col-12 cat-list px-0" id="games_actions">
+                <SearchInput
+                  txtSearch={txtSearch}
+                  setTxtSearch={setTxtSearch}
+                  searchRef={searchRef}
+                  search={search}
+                  isMobile={isMobile}
+                />
               </div>
-
               <ProviderContainer
                 categories={categories}
                 selectedProvider={selectedProvider}
                 setSelectedProvider={setSelectedProvider}
                 onProviderSelect={handleProviderSelect}
-                onOpenProviders={() => setShowFilterModal(true)}
               />
             </div>
 
-            <div className="dw-casino-11 showLobby">
-              <div className="SearchContainer desktop-item">
-                {!isMobile && (
-                  <SearchInput
-                    txtSearch={txtSearch}
-                    setTxtSearch={setTxtSearch}
-                    searchRef={searchRef}
-                    search={search}
-                    isMobile={isMobile}
-                  />
-                )}
-              </div>
+            <div className="mt-0 mt-sm-2 mt-lg-3" id="games_container">
               {
                 games.length > 0 &&
-                <div className="Live-AllGames AllGames">
-                  {games.map((game) => (
+                  games.map((game) => (
                     <LiveGameCard
                       key={game.id}
                       id={game.id}
@@ -435,56 +405,18 @@ const LiveCasino = () => {
                         }
                       }}
                     />
-                  ))}
-                </div>
+                  ))
               }
-
-              {!isLoadingGames && games.length === 0 && (
-                <div className="GamesEmptyContainer">
-                  <div className="GamesEmpty">
-                    <span>Sin Juegos</span>
-                  </div>
-                </div>
-              )}
-
-              {games.length > 0 && (
-                <div className="text-center">
-                  <button className="load-more" onClick={loadMoreGames}>
-                    <span>VER MÁS {isLoadingGames && <LoadApi />}</span>
-                  </button>
-                </div>
-              )}
-
-              <ProviderModal
-                isOpen={showFilterModal}
-                onClose={() => setShowFilterModal(false)}
-                onCategorySelect={(category) => {
-                  handleCategorySelect(category);
-                }}
-                onCategoryClick={(tag, _id, _table, index) => {
-                  setTxtSearch("");
-                  setShowFullDivLoading(true);
-                  if (window.location.hash !== `#${tag.code}`) {
-                    window.location.hash = `#${tag.code}`;
-                    getPage(tag.code);
-                  } else {
-                    setSelectedCategoryIndex(index);
-                    setIsSingleCategoryView(false);
-                    setIsExplicitSingleCategoryView(false);
-                    getPage(tag.code);
-                  }
-                }}
-                onSelectProvider={(provider) => {
-                  handleProviderSelect(provider);
-                  setShowFilterModal(false);
-                }}
-                contextData={contextData}
-                tags={tags}
-                categories={categories}
-                selectedCategoryIndex={selectedCategoryIndex}
-              />
             </div>
-          </div>
+
+            {games.length > 0 && (
+              <div className="text-center">
+                <button className="load-more" onClick={loadMoreGames}>
+                  <span>VER MÁS {isLoadingGames && <LoadApi />}</span>
+                </button>
+              </div>
+            )}
+          </main>
         </>
       )}
     </>

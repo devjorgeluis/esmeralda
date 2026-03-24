@@ -24,24 +24,13 @@ const LiveGameCard = (props) => {
     };
 
     return (
-        <a className="GameContainer game-opened-iframe" onClick={handleGameClick}>
-            <div className="Live-Game Game">
-                <div className="Image">
-                    <img src={props.imageSrc} alt={props.title} />
-                </div>
-                <div className="InfoGame">
-                    <div className="Info">
-                        <div className="ProviderName">{props.provider}</div>
-                        <div className="GameName">{props.title}</div>
-                    </div>
-                    <div className="FavoriteContainer">
-                        <div className="Favorite Centered">
-                            <i className="fa-regular fa-heart fa-fw"></i>
-                        </div>
-                    </div>
-                </div>
+        <div className="col-8 offset-2 col-sm-3 offset-sm-0 my-2 mt-sm-0 view overlay zoom game-item" onClick={handleGameClick}>
+            <img src={props.imageSrc} className="img-fluid z-depth-1" title={props.title}></img>
+            <div className="footer-name">{props.title}</div>
+            <div className="mask flex-center waves-effect waves-light">
+                <p className="white-text"><i className="far fa-play-circle"></i></p>
             </div>
-        </a>
+        </div>
     );
 };
 

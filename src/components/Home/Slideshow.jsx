@@ -49,7 +49,7 @@ const Slideshow = () => {
           spaceBetween={0}
           loop={true}
           autoplay={{
-            delay: 5000,
+            delay: 500000,
             disableOnInteraction: false,
           }}
           onSlideChange={handleSlideChange}
