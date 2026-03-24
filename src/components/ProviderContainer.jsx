@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 const ProviderContainer = ({
@@ -6,6 +7,7 @@ const ProviderContainer = ({
     onProviderSelect,
     onOpenProviders
 }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
     const location = useLocation();
     const providers = categories.filter(cat => cat.code !== "home" && cat.code);
 
@@ -20,8 +22,17 @@ const ProviderContainer = ({
             (hashCode === provider.code);
     };
 
+    const handleToggleProviders = (e) => {
+        e.preventDefault();
+        setIsExpanded((previous) => !previous);
+        if (onOpenProviders) onOpenProviders();
+    };
+
     return (
-        <div className="cat-list-inside">
+        <div className={`cat-list-inside ${isExpanded ? "cat-list-inside-expand" : ""}`} style={{ maxHeight : isExpanded && "70vh" }}>
+            <div className="btn-list-item d-inline-block" id="cat_list_more" onClick={handleToggleProviders}>
+                <i className={`fas ${isExpanded ? "fa-chevron-up" : "fa-chevron-down"}`}></i>
+            </div>
             {
                 providers.map((provider, idx) => {
                     // const imageUrl = provider.image_local
