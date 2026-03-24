@@ -147,7 +147,7 @@ const Home = () => {
           isMobile={isMobile}
         />
       ) : (
-        <main>
+        <main className="home">
           <Slideshow />
 
           <div className="container px-0 pb-5">

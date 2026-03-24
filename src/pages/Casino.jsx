@@ -4,11 +4,9 @@ import { AppContext } from "../AppContext";
 import { LayoutContext } from "../components/Layout/LayoutContext";
 import { NavigationContext } from "../components/Layout/NavigationContext";
 import { callApi } from "../utils/Utils";
-import Slideshow from "../components/Home/Slideshow";
 import HotGameSlideshow from "../components/Home/HotGameSlideshow";
 import GameCard from "/src/components/GameCard";
 import GameModal from "../components/Modal/GameModal";
-import ProviderModal from "../components/Modal/ProviderModal";
 import CategoryContainer from "../components/CategoryContainer";
 import ProviderContainer from "../components/ProviderContainer";
 import SearchInput from "../components/SearchInput";
@@ -21,14 +19,6 @@ let selectedGameLauncher = null;
 let selectedGameName = null;
 let selectedGameImg = null;
 let pageCurrent = 0;
-
-import ImgCategoryHome from "/src/assets/svg/home.svg";
-import ImgCategoryPopular from "/src/assets/svg/new.svg";
-import ImgCategoryBlackjack from "/src/assets/svg/jackpots.svg";
-import ImgCategoryRoulette from "/src/assets/svg/roulette.svg";
-import ImgCategoryCrash from "/src/assets/svg/crash.svg";
-import ImgCategoryMegaways from "/src/assets/svg/megaways.svg";
-import Img777 from "/src/assets/svg/casino.svg";
 
 const Casino = () => {
   const pageTitle = "Casino";
@@ -51,7 +41,6 @@ const Casino = () => {
   const [isSingleCategoryView, setIsSingleCategoryView] = useState(false);
   const [isExplicitSingleCategoryView, setIsExplicitSingleCategoryView] =
     useState(false);
-  const [showFilterModal, setShowFilterModal] = useState(false);
   const [isLoadingGames, setIsLoadingGames] = useState(false);
   const refGameModal = useRef();
   const location = useLocation();
@@ -93,18 +82,18 @@ const Casino = () => {
     const isSlotsOnlyFalse = isSlotsOnly === false || isSlotsOnly === "false";
     let tmpTags = isSlotsOnlyFalse
       ? [
-        { name: "Lobby", code: "home", image: ImgCategoryHome },
-        { name: "Hot", code: "hot", image: ImgCategoryPopular },
-        { name: "Jokers", code: "joker", image: ImgCategoryBlackjack },
-        { name: "Ruletas", code: "roulette", image: ImgCategoryRoulette },
-        { name: "Crash", code: "arcade", image: ImgCategoryCrash },
-        { name: "Megaways", code: "megaways", image: ImgCategoryMegaways },
+        { name: "Lobby", code: "home" },
+        { name: "Hot", code: "hot" },
+        { name: "Jokers", code: "joker" },
+        { name: "Ruletas", code: "roulette" },
+        { name: "Crash", code: "arcade" },
+        { name: "Megaways", code: "megaways" },
       ]
       : [
-        { name: "Lobby", code: "home", image: ImgCategoryHome },
-        { name: "Hot", code: "hot", image: ImgCategoryPopular },
-        { name: "Jokers", code: "joker", image: ImgCategoryBlackjack },
-        { name: "Megaways", code: "megaways", image: ImgCategoryMegaways },
+        { name: "Lobby", code: "home" },
+        { name: "Hot", code: "hot" },
+        { name: "Jokers", code: "joker" },
+        { name: "Megaways", code: "megaways" },
       ];
 
     setTags(tmpTags);
@@ -191,7 +180,7 @@ const Casino = () => {
     resetCurrentPage,
     pageGroupCode = null,
   ) => {
-    const pageSize = 10;
+    const pageSize = 20;
     const groupCode = pageGroupCode || pageData.page_group_code;
     const apiUrl =
       "/get-content?page_group_type=categories&page_group_code=" +
@@ -452,7 +441,6 @@ const Casino = () => {
   const handleCategorySelect = (category) => {
     setActiveCategory(category);
     setSelectedProvider(null);
-    setShowFilterModal(false);
     setTxtSearch("");
   };
 
@@ -570,27 +558,16 @@ const Casino = () => {
           isMobile={isMobile}
         />
       ) : (
-        <div className="home-section-module">
-          <Slideshow />
-
-          <div className="home-section-module-important home-section-module-39 loaded">
-            <div className="casino-filters-mobile mobile-item">
-              <div className="SearchContainer">
-                <SearchInput
-                  txtSearch={txtSearch}
-                  setTxtSearch={setTxtSearch}
-                  searchRef={searchRef}
-                  search={search}
-                  isMobile={isMobile}
-                />
-              </div>
-              <div
-                className="btn filter-all provider-item"
-                onClick={() => setShowFilterModal(true)}
-              >
-                <img src={Img777} />
-                <span className="name">Proveedores</span>
-              </div>
+        <main className="casino">
+          <div className="col-12 cat-list px-0" id="games_categories">
+            <div className="col-12 cat-list px-0" id="games_actions">
+              <SearchInput
+                txtSearch={txtSearch}
+                setTxtSearch={setTxtSearch}
+                searchRef={searchRef}
+                search={search}
+                isMobile={isMobile}
+              />
             </div>
             <CategoryContainer
               categories={tags}
@@ -617,30 +594,16 @@ const Casino = () => {
               selectedProvider={selectedProvider}
               setSelectedProvider={setSelectedProvider}
               onProviderSelect={handleProviderSelect}
-              onOpenProviders={() => setShowFilterModal(true)}
             />
           </div>
 
 
-          <div className="dw-casino-11 showLobby">
-            <div className="SearchContainer desktop-item">
-              {!isMobile && (
-                <SearchInput
-                  txtSearch={txtSearch}
-                  setTxtSearch={setTxtSearch}
-                  searchRef={searchRef}
-                  search={search}
-                  isMobile={isMobile}
-                />
-              )}
-            </div>
-
+          <div className="col-12" id="games_container">
             {selectedProvider || isExplicitSingleCategoryView ? (
               <>
                 {
                   games.length > 0 &&
-                  <div className="AllGames">
-                    {games.map((game) => (
+                    games.map((game) => (
                       <GameCard
                         key={game.id}
                         id={game.id}
@@ -660,22 +623,14 @@ const Casino = () => {
                           }
                         }}
                       />
-                    ))}
-                  </div>
+                    )
+                  )
                 }
-
-                {!isLoadingGames && games.length === 0 && (
-                  <div className="GamesEmptyContainer">
-                    <div className="GamesEmpty">
-                      <span>Sin Juegos</span>
-                    </div>
-                  </div>
-                )}
 
                 {(isExplicitSingleCategoryView || selectedProvider) &&
                   games.length > 0 && (
-                    <div className="btn-footer-sg">
-                      <button className="btn btn-theme02" onClick={loadMoreGames}>
+                    <div className="text-center">
+                      <button className="load-more" onClick={loadMoreGames}>
                         <span>VER MÁS {isLoadingGames && <LoadApi />}</span>
                       </button>
                     </div>
@@ -687,8 +642,7 @@ const Casino = () => {
                   <>
                     {
                       games.length > 0 &&
-                      <div className="AllGames">
-                        {games.map((game) => (
+                        games.map((game) => (
                           <GameCard
                             key={game.id}
                             id={game.id}
@@ -708,28 +662,20 @@ const Casino = () => {
                               }
                             }}
                           />
-                        ))}
-                      </div>
+                        )
+                      )
                     }
 
-                    {!isLoadingGames && games.length === 0 && (
-                      <div className="GamesEmptyContainer">
-                        <div className="GamesEmpty">
-                          <span>Sin Juegos</span>
-                        </div>
-                      </div>
-                    )}
-
                     {games.length > 0 && (
-                      <div className="btn-footer-sg">
-                        <button className="btn btn-theme02" onClick={loadMoreGames}>
+                      <div className="text-center">
+                        <button className="load-more" onClick={loadMoreGames}>
                           <span>VER MÁS {isLoadingGames && <LoadApi />}</span>
                         </button>
                       </div>
                     )}
                   </>
                 ) : (
-                  <>
+                  <div className="games_slide">
                     {firstFiveCategoriesGames.map((entry, catIndex) => {
                       if (!entry || !entry.games) return null;
 
@@ -739,7 +685,7 @@ const Casino = () => {
                           games={entry.games}
                           name={entry?.category?.name}
                           title={entry?.category?.name}
-                          icon=""
+                          length={7}
                           slideshowKey={entry?.category?.id}
                           loadMoreContent={() =>
                             loadMoreContent(entry.category, catIndex)
@@ -754,41 +700,12 @@ const Casino = () => {
                         />
                       );
                     })}
-                  </>
+                  </div>
                 )}
               </>
             )}
-
-            <ProviderModal
-              isOpen={showFilterModal}
-              onClose={() => setShowFilterModal(false)}
-              onCategorySelect={(category) => {
-                handleCategorySelect(category);
-              }}
-              onCategoryClick={(tag, _id, _table, index) => {
-                setTxtSearch("");
-
-                setShowFullDivLoading(true);
-                if (window.location.hash !== `#${tag.code}`) {
-                  window.location.hash = `#${tag.code}`;
-                } else {
-                  setSelectedCategoryIndex(index);
-                  setIsSingleCategoryView(false);
-                  setIsExplicitSingleCategoryView(false);
-                  getPage(tag.code);
-                }
-              }}
-              onSelectProvider={(provider) => {
-                handleProviderSelect(provider);
-                setShowFilterModal(false);
-              }}
-              contextData={contextData}
-              tags={tags}
-              categories={categories}
-              selectedCategoryIndex={selectedCategoryIndex}
-            />
           </div>
-        </div>
+        </main>
       )}
     </>
   );

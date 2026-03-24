@@ -183,6 +183,14 @@
     padding: 30px 0;
 }
 
+#header-lobby .swiper-wrapper {
+    padding: 0;
+}
+
+.home #header-lobby {
+    min-height: auto;
+}
+
 section .swiper-slide {
     text-align: center;
     font-size: 18px;
@@ -306,10 +314,6 @@ section .swiper-slide {
 }
 
 @media (min-width:992px) {
-    .fixed-sn main {
-        padding-top: 0 !important
-    }
-
     .poker-lobby,
     .casino-lobby,
     .livecasino-lobby,

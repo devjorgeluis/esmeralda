@@ -15,23 +15,21 @@ const CategoryContainer = (props) => {
     };
 
     return (
-        <div className="categories-container">
-            <div className="categories">
-                {props.categories.map((category, index) => (
-                    <CategoryButton
-                        key={category.id ?? category.code ?? index}
-                        name={category.name}
-                        code={category.code}
-                        image={category.image}
-                        count={category.element_count}
-                        active={
-                            props.selectedProvider === null &&
-                            props.selectedCategoryIndex === index
-                        }
-                        onClick={() => handleCategoryClick(category, index)}
-                    />
-                ))}
-            </div>
+        <div className="cat-list-inside">
+            {props.categories.map((category, index) => (
+                <CategoryButton
+                    key={category.id ?? category.code ?? index}
+                    name={category.name}
+                    code={category.code}
+                    image={category.image}
+                    count={category.element_count}
+                    active={
+                        props.selectedProvider === null &&
+                        props.selectedCategoryIndex === index
+                    }
+                    onClick={() => handleCategoryClick(category, index)}
+                />
+            ))}
         </div>
     )
 }

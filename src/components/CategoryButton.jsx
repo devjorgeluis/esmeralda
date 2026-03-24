@@ -1,16 +1,13 @@
 const CategoryButton = (props) => {
-    let customClass = "category";
+    let customClass = "cat-list-item d-inline-block";
     if (props.active == true) {
-        customClass += " Active";
+        customClass += " active";
     }
 
     return (
-        <a className={customClass} onClick={props.onClick}>
-            <div className="icon">
-                <img src={props.image} />
-            </div>
-            <span className="game-name">{props.name}</span>
-        </a>
+        <div className={customClass} onClick={props.onClick}>
+            {props.name}
+        </div>
     );
 };
 

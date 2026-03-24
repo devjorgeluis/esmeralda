@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { AppContext } from "../../AppContext";
 
+import ImgPromo from "/src/assets/img/promo.png";
 import ImgHome from "/src/assets/img/home.png";
 import ImgCasino from "/src/assets/img/casino.png";
 import ImgLiveCasino from "/src/assets/img/live-casino.png";
@@ -105,8 +106,8 @@ const Header = ({
                         </ul>
                     </li>
                 </ul>
-                <img src="https://cdn.esmeralda.world/mkt/images/es/sidenav_promo.png" id="sidenav-promo-banner" className="cursor-pointer" />
-                    <div className="sidenav-bg mask-strong"></div>
+                <img src={ImgPromo} id="sidenav-promo-banner" className="cursor-pointer" />
+                <div className="sidenav-bg mask-strong"></div>
             </div>
             <div id="sidenav-overlay" onClick={() => setSidebarOpen(false)}></div>
         </>

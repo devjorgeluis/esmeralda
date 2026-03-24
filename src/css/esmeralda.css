@@ -760,15 +760,19 @@ section .swiper-button-next, section .swiper-container-rtl .swiper-button-prev {
 section .swiper-button-prev, section .swiper-button-next {
     position: absolute;
     top: 40% !important;
-    width: calc(var(--swiper-navigation-size) / 44 * 27);
+    width: var(--swiper-navigation-size);
     height: var(--swiper-navigation-size);
     margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
-    z-index: 10;
+    z-index: 1000;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--swiper-navigation-color, var(--swiper-theme-color));
+}
+
+.casino section .swiper-button-prev, .casino section .swiper-button-next {
+    top: 50% !important;
 }
 
 .swiper-pagination {
@@ -789,6 +793,23 @@ section .swiper-button-prev, section .swiper-button-next {
     opacity: 1;
 }
 
-#header-lobby .swiper-wrapper {
-    padding: 0;
+.load-more {
+    padding: 8px 15px;
+    margin: 10px;
+    cursor: pointer;
+    text-align: center;
+    background-image: linear-gradient(#333, #111);
+    border-radius: 6px;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: none;
+    color: #fff;
+    border: none;
+}
+
+.load-more:hover {
+    background-image: none;
+    background-color: #767272;
 }

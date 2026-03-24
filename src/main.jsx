@@ -8,6 +8,7 @@ import "./css/lightbox-min.css"
 import './css/side_menu-min.css'
 import './css/notifications-min.css'
 import './css/index-min.css'
+import './css/casino-min.css'
 import './css/index.css'
 import './css/bloques.css'
 import './css/esmeralda.css'

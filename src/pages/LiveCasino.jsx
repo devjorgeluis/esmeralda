@@ -448,8 +448,8 @@ const LiveCasino = () => {
               )}
 
               {games.length > 0 && (
-                <div className="btn-footer-sg">
-                  <button className="btn btn-theme02" onClick={loadMoreGames}>
+                <div className="text-center">
+                  <button className="load-more" onClick={loadMoreGames}>
                     <span>VER MÁS {isLoadingGames && <LoadApi />}</span>
                   </button>
                 </div>
