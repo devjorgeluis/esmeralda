@@ -116,7 +116,6 @@
 }
 
 #current_container {
-    display: none;
     height: calc(100vh - 50px);
     text-align: -webkit-center;
     padding-left: 0;

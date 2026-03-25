@@ -45,7 +45,7 @@ const CasinoGameSlideshow = ({ games, name, title, onGameClick }) => {
                         breakpoints={{
                             320: { slidesPerView: 1.1, spaceBetween: 10 },
                             768: { slidesPerView: 2.1, spaceBetween: 10 },
-                            1200: { slidesPerView: 4.1, spaceBetween: 20 },
+                            1200: { slidesPerView: 4.2, spaceBetween: 20 },
                         }}
                         navigation={{
                             prevEl: prevRef.current,

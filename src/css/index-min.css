@@ -29,7 +29,6 @@
 }
 
 #current_container {
-    display: none;
     height: calc(100vh - 52px);
     text-align: -webkit-center;
     padding-left: 0;
