@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import Img18 from "/src/assets/svg/18.svg";
+import ImgLogo from "/src/assets/img/gt-logo.png";
 
 const Footer = ({ isSlotsOnly }) => {
     const navigate = useNavigate();
@@ -62,8 +64,8 @@ const Footer = ({ isSlotsOnly }) => {
                 </div>
             </div>
             <div className="footer-copyright text-center py-3">
-                <img src="https://cdn.esmeralda.world/images/18.svg" width="30px" />
-                <img src="https://cdn.esmeralda.world/images/gt-logo.png" width="50" alt="" />
+                <img src={Img18} width="30px" />
+                <img src={ImgLogo} width="50" alt="" />
                 Juega responsablemente. Para mayor información visita:
                 <a href="https://www.gamblingtherapy.org/es" target="_new"> GamblingTherapy.org</a>
             </div>
