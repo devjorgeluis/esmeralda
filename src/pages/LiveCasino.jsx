@@ -361,9 +361,12 @@ const LiveCasino = () => {
       ) : (
         <>
           <main id="main" className="casino live-casino">
-            <div className="col-12 px-0 text-center" id="banner_container">
-              <img src={ImgBg} />
-            </div>
+            {
+              !isMobile &&
+              <div className="col-12 px-0 text-center" id="banner_container">
+                <img src={ImgBg} />
+              </div>
+            }
             <div className="col-12 cat-list px-0" id="games_categories">
               <div className="col-12 cat-list px-0" id="games_actions">
                 <SearchInput

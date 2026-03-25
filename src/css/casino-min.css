@@ -55,7 +55,7 @@
 #games_categories {
     position: sticky;
     z-index: 1001;
-    top: 51px;
+    top: 53px;
     bottom: auto;
     overflow: hidden
 }
@@ -407,7 +407,7 @@
 
 @media (min-width: 992px) {
     #games_categories {
-        top:51px
+        top:53px
     }
 
     .cat-list-item {

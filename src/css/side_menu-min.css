@@ -201,7 +201,7 @@ body {
 }
 
 .navbar {
-    height: 51px
+    height: 53px
 }
 
 #MainNavBar .navbar-nav {
@@ -454,7 +454,7 @@ label[for="RegisterPassportTypeOther"],
 
 .fixed-sn main,
 .hidden-sn main {
-    padding-top: 51px
+    padding-top: 11px
 }
 
 .collapsible-level-2 {

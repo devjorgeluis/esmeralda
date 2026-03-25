@@ -36,6 +36,7 @@ const Layout = () => {
     const location = useLocation();
     const isSportsPage = location.pathname === "/sports" || location.pathname === "/live-sports";  
     const isHomePage = location.pathname === "/" || location.pathname === "/home";
+    const isLoginPage = location.pathname === "/login";
 
     useEffect(() => {
         if (contextData.session != null) {
@@ -173,28 +174,31 @@ const Layout = () => {
                 value={{ selectedPage, setSelectedPage, getPage, showFullDivLoading, setShowFullDivLoading }}
             >
                 <>             
-                    <FullDivLoading show={showFullDivLoading} />
+                    {/* <FullDivLoading show={showFullDivLoading} /> */}
                     {showMyProfileModal && (
                         <MyProfileModal
                             isMobile={isMobile}
                             isOpen={showMyProfileModal}
                             onClose={() => setShowMyProfileModal(false)}
                         />
-                    )}                    
-                    <Header
-                        isLogin={isLogin}
-                        isSlotsOnly={isSlotsOnly}
-                        userBalance={userBalance}
-                        handleLoginClick={handleLoginClick}
-                        handleLogoutClick={handleLogoutClick}
-                        handleMyProfileClick={handleMyProfileClick}
-                        supportParent={supportParent}
-                        openSupportModal={openSupportModal}
-                        refreshBalance={refreshBalance}
-                    />
+                    )}
+                    {
+                        !isLoginPage && 
+                        <Header
+                            isLogin={isLogin}
+                            isSlotsOnly={isSlotsOnly}
+                            userBalance={userBalance}
+                            handleLoginClick={handleLoginClick}
+                            handleLogoutClick={handleLogoutClick}
+                            handleMyProfileClick={handleMyProfileClick}
+                            supportParent={supportParent}
+                            openSupportModal={openSupportModal}
+                            refreshBalance={refreshBalance}
+                        />
+                    }
                     {/* Sidebar is rendered inside Header; no duplicate here. */}
                     <Outlet context={{ isSlotsOnly, isLogin, isMobile }} />
-                    {!isSportsPage &&  <Footer isLogin={isLogin} isSlotsOnly={isSlotsOnly} /> }
+                    {!isSportsPage && !isLoginPage && <Footer isLogin={isLogin} isSlotsOnly={isSlotsOnly} /> }
                     <SupportModal
                         isOpen={showSupportModal}
                         onClose={closeSupportModal}

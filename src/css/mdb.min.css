@@ -10842,7 +10842,7 @@ body.scrollable {
 
 .md-form label {
   position: absolute;
-  top: .65rem;
+  top: .15rem;
   left: 0;
   -webkit-transition: .2s ease-out;
   -o-transition: .2s ease-out;
@@ -16681,9 +16681,7 @@ span[data-jarallax-element] {
 
 .jarallax>.jarallax-img {
   position: absolute;
-  -o-object-fit: cover;
   object-fit: cover;
-  font-family: 'object-fit: cover;';
   top: 0;
   left: 0;
   width: 100%;
