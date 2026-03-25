@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import ImgLogo from "/src/assets/svg/logo.svg";
 
 const Footer = ({ isSlotsOnly }) => {
     const navigate = useNavigate();

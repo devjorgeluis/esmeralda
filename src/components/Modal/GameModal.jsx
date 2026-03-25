@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { NavigationContext } from "../Layout/NavigationContext";
 import { useFooter } from "../Layout/FooterContext";
-import LoadGame from "../Loading/LoadGame";
 
 const GameModal = (props) => {
   const [url, setUrl] = useState(null);
