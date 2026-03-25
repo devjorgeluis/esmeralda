@@ -38,6 +38,18 @@ const Casino = () => {
   const [pageData, setPageData] = useState({});
   const [gameUrl, setGameUrl] = useState("");
   const [shouldShowGameModal, setShouldShowGameModal] = useState(false);
+  const [gameLaunchError, setGameLaunchError] = useState("");
+
+  useEffect(() => {
+    if (!gameLaunchError) return;
+
+    const timer = setTimeout(() => {
+      setGameLaunchError("");
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [gameLaunchError]);
+
   const [isSingleCategoryView, setIsSingleCategoryView] = useState(false);
   const [isExplicitSingleCategoryView, setIsExplicitSingleCategoryView] =
     useState(false);
@@ -101,7 +113,6 @@ const Casino = () => {
 
   const getPage = (page) => {
     setIsLoadingGames(true);
-    setShowFullDivLoading(true);
     setGames([]);
     setFirstFiveCategoriesGames([]);
     setIsSingleCategoryView(false);
@@ -145,7 +156,6 @@ const Casino = () => {
         if (firstFiveCategories.length > 0) {
           setFirstFiveCategoriesGames([]);
           pendingCategoryFetchesRef.current = firstFiveCategories.length;
-          setShowFullDivLoading(true);
           firstFiveCategories.forEach((item, index) => {
             fetchContentForCategory(
               item,
@@ -211,9 +221,6 @@ const Casino = () => {
         0,
         pendingCategoryFetchesRef.current - 1,
       );
-      if (pendingCategoryFetchesRef.current === 0) {
-        setShowFullDivLoading(false);
-      }
     } else {
       const content = result.content || [];
       configureImageSrc(result);
@@ -241,9 +248,6 @@ const Casino = () => {
         0,
         pendingCategoryFetchesRef.current - 1,
       );
-      if (pendingCategoryFetchesRef.current === 0) {
-        setShowFullDivLoading(false);
-      }
     }
   };
 
@@ -321,7 +325,6 @@ const Casino = () => {
 
   const callbackFetchContent = (result) => {
     if (result.status === 500 || result.status === 422) {
-      setShowFullDivLoading(false);
       setIsLoadingGames(false);
     } else {
       if (pageCurrent == 0) {
@@ -333,7 +336,6 @@ const Casino = () => {
       }
       pageCurrent += 1;
     }
-    setShowFullDivLoading(false);
     setIsLoadingGames(false);
   };
 
@@ -354,6 +356,8 @@ const Casino = () => {
       setShouldShowGameModal(false);
     }
     setShowFullDivLoading(true);
+    setGameLaunchError("");
+
     selectedGameId = game?.id != null ? game.id : selectedGameId;
     selectedGameType = type != null ? type : selectedGameType;
     selectedGameLauncher = launcher != null ? launcher : selectedGameLauncher;
@@ -373,6 +377,7 @@ const Casino = () => {
 
   const callbackLaunchGame = (result) => {
     setShowFullDivLoading(false);
+
     if (result.status == "0") {
       if (isMobile) {
         try {
@@ -389,6 +394,7 @@ const Casino = () => {
         selectedGameImg = null;
         setGameUrl("");
         setShouldShowGameModal(false);
+        setGameLaunchError("");
         return;
       }
 
@@ -405,11 +411,38 @@ const Casino = () => {
         selectedGameImg = null;
         setGameUrl("");
         setShouldShowGameModal(false);
+        setGameLaunchError("");
       } else {
         setGameUrl(result.url);
         setShouldShowGameModal(true);
+        setGameLaunchError("");
       }
+
+      return;
     }
+
+    if (result.status == "1") {
+      const errorMessage = result.message || "Error launching game.";
+      setGameLaunchError(errorMessage);
+      setShouldShowGameModal(false);
+      setGameUrl("");
+      selectedGameId = null;
+      selectedGameType = null;
+      selectedGameLauncher = null;
+      selectedGameName = null;
+      selectedGameImg = null;
+      return;
+    }
+
+    const fallbackMessage = result.message || "Error launching game.";
+    setGameLaunchError(fallbackMessage);
+    setShouldShowGameModal(false);
+    setGameUrl("");
+    selectedGameId = null;
+    selectedGameType = null;
+    selectedGameLauncher = null;
+    selectedGameName = null;
+    selectedGameImg = null;
   };
 
   const closeGameModal = () => {
@@ -509,7 +542,6 @@ const Casino = () => {
     setIsExplicitSingleCategoryView(true);
     setActiveCategory({ name: `Búsqueda: "${keyword.trim()}"` });
     setSelectedProvider(null);
-    setShowFullDivLoading(true);
 
     let pageSize = 30;
 
@@ -528,8 +560,6 @@ const Casino = () => {
   };
 
   const callbackSearch = (result) => {
-    setShowFullDivLoading(false);
-
     if (result.status === 500 || result.status === 422) {
       setGames([]);
     } else {
@@ -575,7 +605,6 @@ const Casino = () => {
               selectedProvider={selectedProvider}
               onCategoryClick={(tag, _id, _table, index) => {
                 setTxtSearch("");
-                setShowFullDivLoading(true);
                 setIsExplicitSingleCategoryView(false);
                 if (window.location.hash !== `#${tag.code}`) {
                   window.location.hash = `#${tag.code}`;
@@ -597,6 +626,12 @@ const Casino = () => {
             />
           </div>
 
+          {gameLaunchError && (
+            <div className="alert alert-danger d-flex justify-content-between align-items-center m-2" role="alert">
+              <span>{gameLaunchError}</span>
+              <i className="fas fa-times cursor-pointer" onClick={() => setGameLaunchError("")}></i>
+            </div>
+          )}
 
           <div className="col-12" id="games_container">
             {selectedProvider || isExplicitSingleCategoryView ? (

@@ -1,20 +1,31 @@
 import { useEffect } from "react";
-import ImgLoader from "/src/assets/img/loader.gif";
 
 const FullDivLoading = (props) => {
     useEffect(() => {
         if (props.show == true) {
             document
-                .getElementById("holds-the-iframe").classList.remove("d-none");
+                .getElementById("games_container_overlay").style.display = "block";
         } else {
             document
-                .getElementById("holds-the-iframe").classList.add("d-none");
+                .getElementById("games_container_overlay").style.display = "none";
         }
     }, [props.show]);
 
     return (
-        <div id="holds-the-iframe" className="holds-the-iframe d-none">
-            {/* <img src={ImgLoader} /> */}
+        <div id="games_container_overlay" className="text-center">
+            <div className="preloader-wrapper big active">
+                <div className="spinner-layer spinner-green-only">
+                    <div className="circle-clipper left">
+                        <div className="circle"></div>
+                    </div>
+                    <div className="gap-patch">
+                        <div className="circle"></div>
+                    </div>
+                    <div className="circle-clipper right">
+                        <div className="circle"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

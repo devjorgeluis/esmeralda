@@ -3,6 +3,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../AppContext";
 import { LayoutContext } from "./LayoutContext";
+import { useFooter } from "./FooterContext";
 import { callApi } from "../../utils/Utils";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -15,6 +16,7 @@ import FullDivLoading from "../Loading/FullDivLoading";
 
 const Layout = () => {
     const { contextData } = useContext(AppContext);
+    const { hideFooter } = useFooter();
     const [selectedPage, setSelectedPage] = useState("lobby");
     const [isLogin, setIsLogin] = useState(contextData.session !== null);
     const [isMobile, setIsMobile] = useState(false);
@@ -104,7 +106,6 @@ const Layout = () => {
 
     const getPage = (page) => {
         setSelectedPage(page);
-        setShowFullDivLoading(true);
         callApi(contextData, "GET", "/get-page?page=" + page, callbackGetPage, null);
         navigate("/" + (page === "home" ? "" : page));
     };
@@ -186,7 +187,7 @@ const Layout = () => {
                 value={{ selectedPage, setSelectedPage, getPage, showFullDivLoading, setShowFullDivLoading }}
             >
                 <>             
-                    {/* <FullDivLoading show={showFullDivLoading} /> */}
+                    <FullDivLoading show={showFullDivLoading} />
                     {showMyProfileModal && (
                         <MyProfileModal
                             isMobile={isMobile}
@@ -226,7 +227,7 @@ const Layout = () => {
                     }
                     {/* Sidebar is rendered inside Header; no duplicate here. */}
                     <Outlet context={{ isSlotsOnly, isLogin, isMobile }} />
-                    {!isSportsPage && !isLoginPage && <Footer isLogin={isLogin} isSlotsOnly={isSlotsOnly} /> }
+                    {!isSportsPage && !isLoginPage && !hideFooter && <Footer isLogin={isLogin} isSlotsOnly={isSlotsOnly} /> }
                     <SupportModal
                         isOpen={showSupportModal}
                         onClose={closeSupportModal}

@@ -1,5 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { NavigationContext } from "../Layout/NavigationContext";
+import { useFooter } from "../Layout/FooterContext";
+import LoadGame from "../Loading/LoadGame";
 
 const GameModal = (props) => {
   const [url, setUrl] = useState(null);
@@ -7,6 +9,7 @@ const GameModal = (props) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isExpandActive, setIsExpandActive] = useState(false);
   const { setShowFullDivLoading } = useContext(NavigationContext);
+  const { setHideFooter } = useFooter();
 
   useEffect(() => {
     if (props.gameUrl !== null && props.gameUrl !== "") {
@@ -20,9 +23,11 @@ const GameModal = (props) => {
         }
         setUrl(props.gameUrl);
         setIsExpandActive(true);
+        setHideFooter(true);
+        setShowFullDivLoading(true);
       }
     }
-  }, [props.gameUrl, props.isMobile]);
+  }, [props.gameUrl, props.isMobile, setHideFooter]);
 
   useEffect(() => {
     return () => {
@@ -35,8 +40,9 @@ const GameModal = (props) => {
       setIframeLoaded(false);
       setIsFullscreen(false);
       setIsExpandActive(false);
+      setHideFooter(false);
     };
-  }, []);
+  }, [setHideFooter]);
 
   const toggleFullScreen = () => {
     const iframe = document.getElementById("game-iframe");
@@ -104,7 +110,6 @@ const GameModal = (props) => {
   };
 
   const handleIframeError = () => {
-    console.error("Error loading game iframe");
     setIframeLoaded(false);
     setShowFullDivLoading(false);
 
@@ -121,6 +126,8 @@ const GameModal = (props) => {
       container.classList.remove("expand-active");
     }
     setIsExpandActive(false);
+    setHideFooter(false);
+    setShowFullDivLoading(true);
     if (typeof props.onClose === 'function') {
       props.onClose();
     }

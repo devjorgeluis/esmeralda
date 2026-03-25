@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect, useRef } from "react";
 import { useLocation, useOutletContext, useNavigate } from "react-router-dom";
 import { AppContext } from "../AppContext";
+import { NavigationContext } from "../components/Layout/NavigationContext";
 import { callApi } from "../utils/Utils";
 import LiveGameCard from "/src/components/LiveGameCard";
 import GameModal from "../components/Modal/GameModal";
@@ -20,6 +21,7 @@ let pageCurrent = 0;
 const LiveCasino = () => {
   const pageTitle = "Live Casino";
   const { contextData } = useContext(AppContext);
+  const { setShowFullDivLoading } = useContext(NavigationContext);
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
   const [txtSearch, setTxtSearch] = useState("");
   const [tags, setTags] = useState([]);
@@ -32,6 +34,18 @@ const LiveCasino = () => {
   const [gameUrl, setGameUrl] = useState("");
   const [shouldShowGameModal, setShouldShowGameModal] = useState(false);
   const [isLoadingGames, setIsLoadingGames] = useState(false);
+  const [gameLaunchError, setGameLaunchError] = useState("");
+
+  useEffect(() => {
+    if (!gameLaunchError) return;
+
+    const timer = setTimeout(() => {
+      setGameLaunchError("");
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [gameLaunchError]);
+
   const refGameModal = useRef();
   const location = useLocation();
   const { isSlotsOnly, isLogin, isMobile } = useOutletContext();
@@ -93,6 +107,7 @@ const LiveCasino = () => {
   const callbackGetPage = (result, page) => {
     if (result.status === 500 || result.status === 422) {
       setIsLoadingGames(false);
+      setShowFullDivLoading(false);
     } else {
       setPageData(result.data);
 
@@ -122,6 +137,8 @@ const LiveCasino = () => {
         pageCurrent = 1;
         setIsLoadingGames(false);
       }
+
+      setShowFullDivLoading(false);
     }
   };
 
@@ -194,6 +211,9 @@ const LiveCasino = () => {
       setShouldShowGameModal(false);
     }
     setIsLoadingGames(true);
+    setShowFullDivLoading(true);
+    setGameLaunchError("");
+
     selectedGameId = game?.id != null ? game.id : selectedGameId;
     selectedGameType = type != null ? type : selectedGameType;
     selectedGameLauncher = launcher != null ? launcher : selectedGameLauncher;
@@ -204,6 +224,8 @@ const LiveCasino = () => {
 
   const callbackLaunchGame = (result) => {
     setIsLoadingGames(false);
+    setShowFullDivLoading(false);
+
     if (result.status == "0") {
       if (isMobile) {
         try {
@@ -238,7 +260,33 @@ const LiveCasino = () => {
         setGameUrl(result.url);
         setShouldShowGameModal(true);
       }
+
+      setGameLaunchError("");
+      return;
     }
+
+    if (result.status == "1") {
+      const errorMessage = result.message || "Error launching game.";
+      setGameLaunchError(errorMessage);
+      setShouldShowGameModal(false);
+      setGameUrl("");
+      selectedGameId = null;
+      selectedGameType = null;
+      selectedGameLauncher = null;
+      selectedGameName = null;
+      selectedGameImg = null;
+      return;
+    }
+
+    const fallbackMessage = result.message || "Error launching game.";
+    setGameLaunchError(fallbackMessage);
+    setShouldShowGameModal(false);
+    setGameUrl("");
+    selectedGameId = null;
+    selectedGameType = null;
+    selectedGameLauncher = null;
+    selectedGameName = null;
+    selectedGameImg = null;
   };
 
   const closeGameModal = () => {
@@ -384,6 +432,13 @@ const LiveCasino = () => {
                 onProviderSelect={handleProviderSelect}
               />
             </div>
+
+            {gameLaunchError && (
+              <div className="alert alert-danger d-flex justify-content-between align-items-center m-2" role="alert">
+                <span>{gameLaunchError}</span>
+                <i className="fas fa-times cursor-pointer" onClick={() => setGameLaunchError("")}></i>
+              </div>
+            )}
 
             <div className="mt-0 mt-sm-2 mt-lg-3" id="games_container">
               {

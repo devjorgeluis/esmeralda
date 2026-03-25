@@ -8,11 +8,12 @@ import LiveSports from "./pages/LiveSports";
 import Profile from "./pages/Profile/Profile";
 import NoPage from "./pages/NoPage";
 import Layout from "./components/Layout/Layout";
+import { FooterProvider } from "./components/Layout/FooterContext";
 
 export default function AppRoutes() {
     return (
         <Routes>
-            <Route element={<Layout />}>
+            <Route element={<FooterProvider><Layout /></FooterProvider>}>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/home" element={<Home />} />

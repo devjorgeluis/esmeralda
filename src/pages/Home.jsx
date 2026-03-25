@@ -36,7 +36,6 @@ const Home = () => {
       if (document.visibilityState === "visible") {
         const currentPath = window.location.pathname;
         if (currentPath === "/" || currentPath === "") {
-          setShowFullDivLoading(true);
           pendingPageRef.current.clear();
           lastProcessedPageRef.current = { page: null, ts: 0 };
 
@@ -110,7 +109,7 @@ const Home = () => {
   };
 
   const callbackLaunchGame = (result) => {
-    // setShowFullDivLoading(false);
+    setShowFullDivLoading(false);
     if (result.status === "0") {
       switch (selectedGameLauncher) {
         case "modal":
