@@ -8,6 +8,8 @@ import Header from "./Header";
 import Footer from "./Footer";
 import SupportModal from "../Modal/SupportModal";
 import MyProfileModal from "../Modal/MyProfileModal";
+import MyProfileHistoryModal from "../Modal/MyProfileHistoryModal";
+import MyProfileTransactionModal from "../Modal/MyProfileTransactionModal";
 import { NavigationContext } from "./NavigationContext";
 import FullDivLoading from "../Loading/FullDivLoading";
 
@@ -23,6 +25,8 @@ const Layout = () => {
     const [supportParent, setSupportParent] = useState("");
     const [isSlotsOnly, setIsSlotsOnly] = useState("");
     const [showMyProfileModal, setShowMyProfileModal] = useState(false);
+    const [showMyProfileHistoryModal, setShowMyProfileHistoryModal] = useState(false);
+    const [showMyProfileTransactionModal, setShowMyProfileTransactionModal] = useState(false);
     const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
     const [showSupportModal, setShowSupportModal] = useState(false);
     const [supportParentOnly, setSupportParentOnly] = useState(false);
@@ -153,7 +157,15 @@ const Layout = () => {
 
     const handleMyProfileClick = () => {
         setShowMyProfileModal(true);
-    };    
+    };
+
+    const handleMyProfileHistoryClick = () => {
+        setShowMyProfileHistoryModal(true);
+    };
+
+    const handleMyProfileTransactionClick = () => {
+        setShowMyProfileTransactionModal(true);
+    };
 
     const layoutContextValue = {
         isLogin,
@@ -182,6 +194,20 @@ const Layout = () => {
                             onClose={() => setShowMyProfileModal(false)}
                         />
                     )}
+                    {showMyProfileHistoryModal && (
+                        <MyProfileHistoryModal
+                            isMobile={isMobile}
+                            isOpen={showMyProfileHistoryModal}
+                            onClose={() => setShowMyProfileHistoryModal(false)}
+                        />
+                    )}
+                    {showMyProfileTransactionModal && (
+                        <MyProfileTransactionModal
+                            isMobile={isMobile}
+                            isOpen={showMyProfileTransactionModal}
+                            onClose={() => setShowMyProfileTransactionModal(false)}
+                        />
+                    )}
                     {
                         !isLoginPage && 
                         <Header
@@ -191,6 +217,8 @@ const Layout = () => {
                             handleLoginClick={handleLoginClick}
                             handleLogoutClick={handleLogoutClick}
                             handleMyProfileClick={handleMyProfileClick}
+                            handleMyProfileHistoryClick={handleMyProfileHistoryClick}
+                            handleMyProfileTransactionClick={handleMyProfileTransactionClick}
                             supportParent={supportParent}
                             openSupportModal={openSupportModal}
                             refreshBalance={refreshBalance}

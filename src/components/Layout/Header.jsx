@@ -17,6 +17,8 @@ const Header = ({
     handleLoginClick,
     handleLogoutClick,
     handleMyProfileClick,
+    handleMyProfileHistoryClick,
+    handleMyProfileTransactionClick,
     openSupportModal,
     refreshBalance
 }) => {
@@ -166,8 +168,14 @@ const Header = ({
                                         setDropdownOpen(false);
                                         handleMyProfileClick();
                                     }}>Mis datos</a>
-                                    <a className="dropdown-item waves-effect waves-light">Historial del Juego</a>
-                                    <a className="dropdown-item waves-effect waves-light">Transacciones</a>
+                                    <a className="dropdown-item waves-effect waves-light" onClick={() => {
+                                        setDropdownOpen(false);
+                                        handleMyProfileHistoryClick();
+                                    }}>Historial del Juego</a>
+                                    <a className="dropdown-item waves-effect waves-light" onClick={() => {
+                                        setDropdownOpen(false);
+                                        handleMyProfileTransactionClick();
+                                    }}>Transacciones</a>
                                     {
                                         supportParent &&
                                         <a className="dropdown-item waves-effect waves-light" onClick={() => {
