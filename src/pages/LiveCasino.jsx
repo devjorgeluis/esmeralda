@@ -316,6 +316,7 @@ const LiveCasino = () => {
   const handleProviderSelect = (provider, index = 0) => {
     setSelectedProvider(provider);
     setTxtSearch("");
+    window.scrollTo(0, 0);
 
     if (provider) {
       setActiveCategory(null);

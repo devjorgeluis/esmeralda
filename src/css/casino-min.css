@@ -197,7 +197,6 @@
 }
 
 #games_container img {
-    min-width: 120px;
     min-height: 100px;
     width: 100%;
     border-radius: 5%!important;

@@ -481,6 +481,7 @@ const Casino = () => {
     setSelectedProvider(provider);
     setTxtSearch("");
     setIsExplicitSingleCategoryView(true);
+    window.scrollTo(0, 0);
 
     if (provider) {
       setActiveCategory(null);
@@ -606,6 +607,7 @@ const Casino = () => {
               onCategoryClick={(tag, _id, _table, index) => {
                 setTxtSearch("");
                 setIsExplicitSingleCategoryView(false);
+                window.scrollTo(0, 0);
                 if (window.location.hash !== `#${tag.code}`) {
                   window.location.hash = `#${tag.code}`;
                   getPage(tag.code);
