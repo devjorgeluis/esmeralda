@@ -29,6 +29,7 @@ const Header = ({
     const [isRefreshing, setIsRefreshing] = useState(false)
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
+    const toggleRef = useRef(null);
     const { contextData } = useContext(AppContext);
 
     const navItems = isSlotsOnly === "false" ? [
@@ -51,7 +52,7 @@ const Header = ({
 
     useEffect(() => {
         function handleDocClick(e) {
-            if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+            if (dropdownRef.current && !dropdownRef.current.contains(e.target) && (!toggleRef.current || !toggleRef.current.contains(e.target))) {
                 setDropdownOpen(false);
             }
         }
@@ -153,7 +154,7 @@ const Header = ({
                     </li>
                     <li className="nav-item dropdown user-custom-dropdown">
                         {
-                            isLogin ? <a className="nav-link waves-effect" onClick={() => setDropdownOpen(!dropdownOpen)}>
+                            isLogin ? <a className="nav-link waves-effect" ref={toggleRef} onClick={() => setDropdownOpen(!dropdownOpen)}>
                                 <i className="far fa-user"></i>
                                 <span className="clearfix d-none d-xl-inline-block own-username">{contextData?.session?.user?.username}</span>
                             </a> : <a className="nav-link waves-effect" onClick={handleLoginClick}>
@@ -163,7 +164,7 @@ const Header = ({
                         }
                         {
                             isLogin && <>
-                                <div className="dropdown-menu dropdown-menu-right user-profile-dropdown" style={{ display: dropdownOpen && "block" }}>
+                                <div className="dropdown-menu dropdown-menu-right user-profile-dropdown" ref={dropdownRef} style={{ display: dropdownOpen && "block" }}>
                                     <a className="dropdown-item waves-effect waves-light" onClick={() => {
                                         setDropdownOpen(false);
                                         handleMyProfileClick();
