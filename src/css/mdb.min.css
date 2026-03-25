@@ -2403,49 +2403,6 @@ a.text-light:hover {
   transform: scale(1.1)
 }
 
-.pattern-1 {
-  background: url(../img/overlays/01.png) fixed
-}
-
-.pattern-2 {
-  background: url(../img/overlays/02.png) fixed
-}
-
-.pattern-3 {
-  background: url(../img/overlays/03.png) fixed
-}
-
-.pattern-4 {
-  background: url(../img/overlays/04.png) fixed
-}
-
-.pattern-5 {
-  background: url(../img/overlays/05.png) fixed
-}
-
-.pattern-6 {
-  background: url(../img/overlays/06.png) fixed
-}
-
-.pattern-7 {
-  background: url(../img/overlays/07.png) fixed
-}
-
-.pattern-8 {
-  background: url(../img/overlays/08.png) fixed
-}
-
-.pattern-9 {
-  background: url(../img/overlays/09.png) fixed
-}
-
-/*!
- * Waves v0.7.6
- * http://fian.my.id/Waves
- *
- * Copyright 2014-2018 Alfiana E. Sibuea and other contributors
- * Released under the MIT license
- * https://github.com/fians/Waves/blob/master/LICENSE */
 .waves-effect {
   position: relative;
   cursor: pointer;
@@ -14765,7 +14722,6 @@ a.btn:not([href]):not([tabindex]):hover {
 .pswp__button,
 .pswp__button--arrow--left:before,
 .pswp__button--arrow--right:before {
-  background: url(../img/lightbox/default-skin.png) no-repeat;
   -webkit-background-size: 264px 88px;
   background-size: 264px 88px;
   width: 44px;
@@ -14778,13 +14734,6 @@ a.btn:not([href]):not([tabindex]):hover {
 (min-resolution:105dpi),
 (-o-min-device-pixel-ratio:11/10),
 (min-resolution:1.1dppx) {
-
-  .pswp--svg .pswp__button,
-  .pswp--svg .pswp__button--arrow--left:before,
-  .pswp--svg .pswp__button--arrow--right:before {
-    background-image: url(../img/lightbox/default-skin.svg)
-  }
-
   .pswp--svg .pswp__button--arrow--left,
   .pswp--svg .pswp__button--arrow--right {
     background: 0 0
@@ -15063,10 +15012,6 @@ a.pswp__share--download:hover {
   width: 20px;
   height: 20px;
   margin: 12px
-}
-
-.pswp__preloader--active .pswp__preloader__icn {
-  background: url(../img/lightbox/preloader.gif) no-repeat
 }
 
 .pswp--css_animation .pswp__preloader--active .pswp__preloader__icn {
