@@ -639,7 +639,7 @@ a {
 
 @media(max-width: 992px) {
     .game-iframe-view_gameIframeWrapper.game-iframe-view_sportbook {
-        top: 53px;
+        top: 0;
         z-index: 999;
         height: 100% !important
     }
