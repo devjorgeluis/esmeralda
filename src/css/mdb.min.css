@@ -10752,7 +10752,9 @@ body.scrollable {
   padding: .3rem 0 .55rem;
   background-image: none;
   background-color: transparent;
-  height: auto
+  height: auto;
+  position: relative;
+  z-index: 10;
 }
 
 .md-form .form-control:focus {
