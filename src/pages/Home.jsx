@@ -151,7 +151,7 @@ const Home = () => {
 
           <div className="container px-0 pb-5">
             <div className="col-12 p-0 m-0 row d-flex">
-              <BannerContainer />
+              <BannerContainer isSlotsOnly={isSlotsOnly} />
               {topGames.length > 0 && (
                 <CasinoGameSlideshow
                   games={topGames}
